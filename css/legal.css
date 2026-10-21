@@ -1,0 +1,45 @@
+/* Mogli legal pages (privacy-policy.html). Loaded after style.css and solutions.css. */
+.legal-hero { padding: clamp(8rem, 16vh, 10rem) 0 clamp(2rem, 4vw, 3rem); text-align: center; background: radial-gradient(70% 60% at 50% 0%, #f3fbdb 0%, rgba(238, 255, 234, 0) 70%), #fff; }
+.legal-hero h1 { margin: 1.2rem 0 .6rem; font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.08; letter-spacing: var(--tracking-tighter); }
+.legal-hero__meta { color: var(--text-muted); }
+.legal { padding: clamp(2rem, 4vw, 3rem) 0 clamp(3rem, 6vw, 5rem); }
+.legal__grid { display: grid; grid-template-columns: 15rem minmax(0, 46rem); gap: clamp(2rem, 6vw, 5rem); justify-content: center; align-items: start; }
+.legal__toc { position: sticky; top: 6rem; padding: 1.4rem 1.4rem 1.2rem; border-radius: 20px; background: #f3fbdb; }
+.legal__toc p { margin: 0 0 .8rem; font-size: .8rem; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: #36731a; }
+.legal__toc ol { margin: 0; padding: 0; list-style: none; counter-reset: toc; }
+.legal__toc li { counter-increment: toc; }
+.legal__toc li + li { margin-top: .15rem; }
+.legal__toc a { display: block; padding: .3rem .6rem; border-radius: 10px; font-size: .92rem; color: var(--text-muted); text-decoration: none; transition: background .2s, color .2s; }
+.legal__toc a::before { content: counter(toc, decimal-leading-zero) "  "; color: #36731a; font-size: .78rem; }
+.legal__toc a:hover, .legal__toc a:focus-visible { background: #fff; color: #141e09; }
+.legal__intro { font-size: 1.2rem; line-height: 1.6; color: #141e09; letter-spacing: var(--tracking-medium); }
+.legal__sec { scroll-margin-top: 6rem; padding-top: 1.8rem; margin-top: 1.8rem; border-top: 1px solid var(--line); }
+.legal__sec:first-of-type { margin-top: 0; }
+.legal__sec h2 { display: flex; align-items: baseline; gap: .8rem; margin: 0 0 1rem; font-size: clamp(1.4rem, 2.4vw, 1.8rem); letter-spacing: var(--tracking-tight); }
+.legal__sec h2 span { font-size: .85rem; color: #36731a; letter-spacing: var(--tracking-wide); }
+.legal__sec p, .legal__sec li { line-height: 1.7; color: #3d3d3d; letter-spacing: var(--tracking-medium); }
+.legal__sec ul { list-style: disc; margin: 0 0 1rem; padding-left: 1.3rem; }
+.legal__sec p { margin: 0 0 1rem; }
+.legal__sec p:last-child, .legal__sec ul:last-child { margin-bottom: 0; }
+.legal__sec li + li { margin-top: .55rem; }
+.legal__sec li::marker { color: #36731a; }
+.legal__sec a { color: #36731a; text-decoration: underline; text-underline-offset: 3px; }
+.legal__sec strong { font-weight: inherit; color: #141e09; border-bottom: 2px solid #60a750; }
+@media (max-width: 991.98px) {
+  .legal__grid { grid-template-columns: minmax(0, 1fr); }
+  .legal__toc { position: static; }
+}
+
+.legal__intro { margin-bottom: 1.4rem; }
+.legal__quick { display: flex; flex-wrap: wrap; gap: .7rem; margin: 0 0 2.4rem; }
+.legal__sec h3 { margin: 1.6rem 0 .6rem; font-size: 1.12rem; letter-spacing: var(--tracking-medium); color: #141e09; font-weight: inherit; }
+.legal__sec h3:first-of-type { margin-top: 0; }
+.legal__steps { margin: 0 0 1rem; padding-left: 1.4rem; }
+.legal__steps li::marker { color: #36731a; }
+.legal__table { margin: .6rem 0 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; }
+.legal__table table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.legal__table th, .legal__table td { padding: .85rem 1.1rem; text-align: left; vertical-align: top; line-height: 1.55; color: #3d3d3d; }
+.legal__table th { background: #f3fbdb; color: #141e09; font-weight: inherit; letter-spacing: var(--tracking-wide); font-size: .85rem; text-transform: uppercase; }
+.legal__table td + td, .legal__table th + th { border-left: 1px solid var(--line); }
+.legal__table tbody tr + tr td { border-top: 1px solid var(--line); }
+@media (max-width: 575.98px) { .legal__table table { min-width: 30rem; } }

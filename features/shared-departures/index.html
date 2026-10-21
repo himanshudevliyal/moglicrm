@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shared Departures for Travel Businesses | Mogli</title>
+  <meta name="description" content="Mogli lets you set up group and shared departures, see how many seats are taken and add bookings to each one.">
+  <meta name="theme-color" content="#ffffff">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" href="../../assets/fonts/diatype-light.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="../../css/style.css" rel="stylesheet">
+  <!-- Solutions page styles (loaded after style.css; reuses its tokens, nav, buttons and FAQ) -->
+  <link href="../../css/solutions.css" rel="stylesheet">
+  <link href="../../css/system.css" rel="stylesheet">
+  <link href="../../css/nav.css" rel="stylesheet">
+  <link href="../../css/feature.css" rel="stylesheet">
+</head>
+
+<body class="sol feat" id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-nav " id="siteNav">
+    <nav class="navbar navbar-expand-lg" aria-label="Primary">
+      <div class="container-fluid nav-shell">
+
+        <a class="navbar-brand brand" href="../../index.html" aria-label="Mogli home">
+          <svg class="brand__mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false">
+            <path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="6" r="2.3" fill="currentColor"/>
+          </svg>
+          <span class="brand__word">mogli</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-bars" aria-hidden="true"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav nav-center">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-placeholder-link>
+                Product <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <ul class="dropdown-menu mogli-menu">
+                <li><a class="dropdown-item" href="../../features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Enquiry inbox</b><small>Capture and track every lead</small></span></a></li>
+                <li><a class="dropdown-item" href="../../index.html#benefits"><span class="mi"><i class="bi bi-map"></i></span><span><b>Itinerary builder</b><small>Day-wise plans and packages</small></span></a></li>
+                <li><a class="dropdown-item" href="../../index.html#benefits"><span class="mi"><i class="bi bi-calendar-check"></i></span><span><b>Bookings</b><small>Confirmations, vouchers, suppliers</small></span></a></li>
+                <li><a class="dropdown-item" href="../../index.html#benefits"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Payments</b><small>Links, instalments, reminders</small></span></a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown dropdown--mega">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                Solutions <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu mogli-menu mega">
+                <div class="mega__col"><p class="mega__h">Who we work with</p><ul class="mega__list mega__list--two"><li><a class="dropdown-item" href="../../solutions-for/dmcs/"><span class="mi"><i class="bi bi-geo-alt"></i></span><span><b>DMCs</b><small>Quotes, contracts and operations in one system</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/international-inbound-tour-operators/"><span class="mi"><i class="bi bi-box-arrow-in-down"></i></span><span><b>International Inbound Tour Operators</b><small>Serve overseas agents without the chaos</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/outbound-tour-operators/"><span class="mi"><i class="bi bi-box-arrow-up-right"></i></span><span><b>Outbound Tour Operators</b><small>Multi-country trips with margins protected</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/b2b-hotel-consolidators/"><span class="mi"><i class="bi bi-building"></i></span><span><b>B2B Hotel Consolidators</b><small>Rates, inventory and channels in one place</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/global-travel-agents/"><span class="mi"><i class="bi bi-globe2"></i></span><span><b>Global Travel Agents</b><small>Quote and collect across countries</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/hospitality-industry/"><span class="mi"><i class="bi bi-house-door"></i></span><span><b>Hospitality Industry</b><small>Hotels, resorts and stays on one system</small></span></a></li></ul></div>
+                <div class="mega__col mega__col--alt"><p class="mega__h">What we solve for</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Leads &amp; enquiries</b><small>One inbox for every source</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/dmcs/#z-quote"><span class="mi"><i class="bi bi-map"></i></span><span><b>Quotes &amp; itineraries</b><small>Priced plans, margin in view</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/dmcs/#z-suppliers"><span class="mi"><i class="bi bi-diagram-3"></i></span><span><b>Suppliers &amp; contracts</b><small>Rates, seasons and validity</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/dmcs/#z-payments"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Payments &amp; accounting</b><small>Paid, pending and overdue</small></span></a></li></ul></div>
+              </div>
+            </li>
+            <!--features-nav--><li class="nav-item dropdown dropdown--mega dropdown--features">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-current="page">
+                Features <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu mogli-menu mega mega--3">
+                <div class="mega__col"><p class="mega__h">CRM &amp; Sales Automation</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Auto Lead Capture</b><small>Every enquiry in one list</small></span></a></li><li><a class="dropdown-item" href="../../features/auto-lead-distribution/"><span class="mi"><i class="bi bi-diagram-2"></i></span><span><b>Auto Lead Distribution</b><small>Right lead, right person</small></span></a></li><li><a class="dropdown-item" href="../../features/follow-ups-and-reminders/"><span class="mi"><i class="bi bi-bell"></i></span><span><b>Advanced Follow-ups &amp; Reminders</b><small>Never forget a follow-up</small></span></a></li><li><a class="dropdown-item" href="../../features/real-time-reports/"><span class="mi"><i class="bi bi-graph-up"></i></span><span><b>Real-Time Reports</b><small>Sales, profit and operations</small></span></a></li></ul><p class="mega__h">Smart Itinerary Builder</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/smart-itinerary-builder/"><span class="mi"><i class="bi bi-map"></i></span><span><b>Smart Itinerary Builder</b><small>Day-wise plans and quotes</small></span></a></li><li><a class="dropdown-item" href="../../features/pricing-and-markup/"><span class="mi"><i class="bi bi-tag"></i></span><span><b>Pricing &amp; Mark-up</b><small>Cost, margin and profit per trip</small></span></a></li></ul></div>
+                <div class="mega__col"><p class="mega__h">Booking &amp; Reservation</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/smart-tour-calendar/"><span class="mi"><i class="bi bi-calendar3"></i></span><span><b>Smart Tour Calendar</b><small>Every trip, day by day</small></span></a></li><li><a class="dropdown-item" href="../../features/check-in-check-out-reports/"><span class="mi"><i class="bi bi-door-open"></i></span><span><b>Check-in / Check-out Reports</b><small>Arrivals and departures, ready</small></span></a></li><li><a class="dropdown-item" href="../../features/shared-departures/"><span class="mi"><i class="bi bi-people"></i></span><span><b>Shared Departures</b><small>Group services, organised</small></span></a></li></ul><p class="mega__h">Payment &amp; Collection Tracking</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/real-time-payment-tracking/"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Real-Time Payment Tracking</b><small>Paid, pending and overdue</small></span></a></li><li><a class="dropdown-item" href="../../features/proforma-invoice/"><span class="mi"><i class="bi bi-file-earmark-text"></i></span><span><b>Proforma Invoice</b><small>Invoices from the booking</small></span></a></li><li><a class="dropdown-item" href="../../features/suppliers-ledger/"><span class="mi"><i class="bi bi-journal-text"></i></span><span><b>Suppliers Ledger</b><small>What you owe every supplier</small></span></a></li></ul></div>
+                <div class="mega__col mega__col--alt"><p class="mega__h">Supplier &amp; Contracting Management</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/bulk-rate-import/"><span class="mi"><i class="bi bi-cloud-upload"></i></span><span><b>Bulk Rate Import</b><small>Upload and update in bulk</small></span></a></li><li><a class="dropdown-item" href="../../features/smart-price-handling/"><span class="mi"><i class="bi bi-currency-exchange"></i></span><span><b>Smart Price Handling</b><small>Rates and availability, night by night</small></span></a></li><li><a class="dropdown-item" href="../../features/channel-management/"><span class="mi"><i class="bi bi-diagram-3"></i></span><span><b>Channel Management</b><small>Every channel in sync</small></span></a></li></ul><p class="mega__h">Administration &amp; Security</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/user-management-and-roles/"><span class="mi"><i class="bi bi-person-gear"></i></span><span><b>User Management &amp; Roles</b><small>The right access for every person</small></span></a></li></ul></div>
+              </div>
+            </li><!--/features-nav-->
+            <li class="nav-item"><a class="nav-link" href="../../index.html#blog">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../pricing.html">Pricing</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <a class="btn btn-pill btn-pill--outline" href="../../contact.html?topic=demo"><i class="bi bi-play-fill" aria-hidden="true"></i> Book a Demo</a>
+            <a class="btn btn-pill btn-pill--solid" href="../../contact.html">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== HERO (same as the solutions pages) ===================== -->
+    <section class="sol-hero" aria-labelledby="sol-title">
+      <div class="container">
+        <p class="sol-eyebrow" data-hero>Mogli feature &middot; Booking &amp; Reservation</p>
+        <h1 id="sol-title" data-hero>Run Group and Shared Departures Without the Juggling</h1>
+        <p class="sol-hero__lead" data-hero>Set up a coach, boat or group tour once, see how many seats are taken and add each booking to it as it comes in.</p>
+        <div class="sol-hero__cta" data-hero>
+          <a class="btn btn-pill btn-pill--dark" href="#demo">Request a Demo <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn-pill btn-pill--ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SHOWCASE ===================== -->
+    <section class="feat-show" aria-label="Shared Departures in Mogli">
+      <div class="container">
+        <div class="feat-show__in" data-reveal><figure class="win"><div class="win__bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../assets/images/solutions/sharedep.webp" width="1896" height="864" alt="Mogli shared departures with seats taken and bookings added"></figure></div>
+      </div>
+    </section>
+
+    <!-- ===================== PROBLEMS ===================== -->
+    <section class="feat-problems" aria-labelledby="prob-title">
+      <div class="container">
+        <header class="feat-head" data-reveal>
+          <p class="feat-eyebrow">The problem</p>
+          <h2 class="feat-h2" id="prob-title">What group services look like without it</h2>
+          <p class="feat-sub">Shared services are easy to overbook and hard to follow.</p>
+        </header>
+        <div class="prob">
+          <article class="prob__card" data-reveal-card><span class="prob__n">01</span><h3>Seats counted by hand</h3><p>Without one record, the number of seats left depends on who updated the sheet last.</p></article>
+          <article class="prob__card" data-reveal-card><span class="prob__n">02</span><h3>Guests added in many places</h3><p>Each booking mentions the shared service, but nothing lists everyone on it together.</p></article>
+          <article class="prob__card" data-reveal-card><span class="prob__n">03</span><h3>Pickup details scattered</h3><p>Driver, pickup point and notes are in messages, not on the departure.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS (sticky steps) ===================== -->
+    <section class="feat-how" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="how">
+          <div class="how__rail">
+            <div data-reveal>
+              <p class="feat-eyebrow">How it works</p>
+              <h2 class="feat-h2" id="how-title">One departure, everyone on it</h2>
+              <ol class="how__nav" aria-label="Steps">
+                <li><a href="#step-1" class="is-active"><span>01</span>Create the departure</a></li><li><a href="#step-2"><span>02</span>Add bookings to it</a></li><li><a href="#step-3"><span>03</span>See it on the calendar</a></li>
+              </ol>
+            </div>
+          </div>
+          <div class="how__steps">
+            <article class="step" id="step-1" data-reveal>
+              <span class="step__tag">01</span>
+              <h3>Create the departure</h3>
+              <p>Set the date, the service and the number of seats, with the driver, pickup details and notes.</p>
+              <figure class="win"><div class="win__bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../assets/images/solutions/sharedep.webp" width="1896" height="864" loading="lazy" alt="Mogli shared departures with seats taken and bookings added"></figure>
+            </article>
+            <article class="step" id="step-2" data-reveal>
+              <span class="step__tag">02</span>
+              <h3>Add bookings to it</h3>
+              <p>Attach bookings as they are confirmed and watch the seat count update.</p>
+              <figure class="win"><div class="win__bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../assets/images/solutions/bookings.webp" width="1896" height="864" loading="lazy" alt="Mogli bookings list with guest, dates, value and reservation status"></figure>
+            </article>
+            <article class="step" id="step-3" data-reveal>
+              <span class="step__tag">03</span>
+              <h3>See it on the calendar</h3>
+              <p>Departures appear on the movement chart next to every other trip.</p>
+              <figure class="win"><div class="win__bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../assets/images/solutions/calendar.webp" width="1896" height="864" loading="lazy" alt="Mogli movement chart showing every trip day by day"></figure>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BENTO ===================== -->
+    <section class="feat-bento" aria-labelledby="bento-title">
+      <div class="container">
+        <header class="feat-head feat-head--c" data-reveal>
+          <p class="feat-eyebrow">What you get</p>
+          <h2 class="feat-h2" id="bento-title">What shared departures give you</h2>
+          <p class="feat-sub">Fewer empty seats and fewer double-sold ones.</p>
+        </header>
+        <div class="bento">
+          <article class="tile tile--a tile--mint" data-reveal-card>
+            <span class="tile__ic"><i class="bi bi-people" aria-hidden="true"></i></span>
+            <h3>Seats taken, at a glance</h3>
+            <p>Each departure shows how many seats are taken, who is on it and the pickup, driver and notes the guests need.</p>
+            <div class="tile__img"><img src="../../assets/images/solutions/sharedep.webp" width="1896" height="864" loading="lazy" alt="Mogli shared departures with seats taken and bookings added"></div>
+          </article>
+          <article class="tile tile--b tile--pale" data-reveal-card>
+            <span class="tile__ic"><i class="bi bi-card-checklist" aria-hidden="true"></i></span>
+            <h3>On every departure</h3>
+            <p>Everything the day needs.</p>
+            <ul class="pills"><li>Seats taken</li><li>Pickup point</li><li>Driver details</li><li>Notes</li></ul>
+          </article>
+          <article class="tile tile--s" data-reveal-card><span class="tile__ic"><i class="bi bi-plus-circle" aria-hidden="true"></i></span><h3>Add bookings in a click</h3><p>Attach a booking to a departure straight from the booking.</p></article>
+          <article class="tile tile--s" data-reveal-card><span class="tile__ic"><i class="bi bi-calendar3" aria-hidden="true"></i></span><h3>On the calendar</h3><p>Departures show on the movement chart with every other service.</p></article>
+          <article class="tile tile--s" data-reveal-card><span class="tile__ic"><i class="bi bi-x-circle" aria-hidden="true"></i></span><h3>Remove if plans change</h3><p>Take a booking off a departure when plans change.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WITH / WITHOUT ===================== -->
+    <section class="feat-vs" aria-labelledby="vs-title">
+      <div class="container">
+        <header class="feat-head feat-head--c" data-reveal>
+          <p class="feat-eyebrow">The difference</p>
+          <h2 class="feat-h2" id="vs-title">Your workflow, with and without Mogli</h2>
+        </header>
+        <div class="vs" data-reveal>
+          <div class="vs__head"><span>Without Mogli</span><span>With Mogli</span></div>
+          <div class="vs__row"><p class="vs__old"><i class="bi bi-x-lg" aria-hidden="true"></i>Seats counted in a shared sheet</p><p class="vs__new"><i class="bi bi-check-lg" aria-hidden="true"></i>Seats taken shown on the departure</p></div>
+          <div class="vs__row"><p class="vs__old"><i class="bi bi-x-lg" aria-hidden="true"></i>Guests listed in many places</p><p class="vs__new"><i class="bi bi-check-lg" aria-hidden="true"></i>Everyone on one departure</p></div>
+          <div class="vs__row"><p class="vs__old"><i class="bi bi-x-lg" aria-hidden="true"></i>Pickup details in messages</p><p class="vs__new"><i class="bi bi-check-lg" aria-hidden="true"></i>Pickup, driver and notes on the record</p></div>
+          <div class="vs__row"><p class="vs__old"><i class="bi bi-x-lg" aria-hidden="true"></i>Departures invisible to the team</p><p class="vs__new"><i class="bi bi-check-lg" aria-hidden="true"></i>Departures on the shared calendar</p></div>
+          <div class="vs__cta"><a class="btn btn-pill btn-pill--dark" href="#demo">Request a Demo <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="sol-faq" aria-labelledby="sfaq-title">
+      <div class="faq" id="sfaq">
+        <div class="faq__head" data-reveal>
+          <p class="eyebrow-alt">FAQs</p>
+          <h2 id="sfaq-title">Questions about Shared Departures</h2>
+        </div>
+        <ul class="faq__list">
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq1" aria-expanded="false" aria-controls="sa1"><span>What is a shared departure?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa1" role="region" aria-labelledby="sq1"><div><p>It is one scheduled service, such as a coach or boat, that several bookings share, with a set number of seats.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq2" aria-expanded="false" aria-controls="sa2"><span>Can I see how many seats are taken?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa2" role="region" aria-labelledby="sq2"><div><p>Yes. Each departure shows seats taken against the total.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq3" aria-expanded="false" aria-controls="sa3"><span>Can I add the driver and pickup details?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa3" role="region" aria-labelledby="sq3"><div><p>Yes. Departures carry pickup point, driver details and notes.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq4" aria-expanded="false" aria-controls="sa4"><span>Do departures show up on the calendar?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa4" role="region" aria-labelledby="sq4"><div><p>Yes. They appear on the movement chart next to every other trip.</p></div></div>
+            </li>
+        </ul>
+        <div class="faq__more" data-reveal><a class="btn btn-pill btn-pill--line" href="#demo">Get in touch with us</a></div>
+      </div>
+    </section>
+
+    <!-- ===================== RELATED FEATURES ===================== -->
+    <section class="feat-more sol-grid sol-grid--tight" aria-labelledby="more-title">
+      <div class="container">
+        <header class="sol-center" data-reveal>
+          <h2 id="more-title">More ways Mogli helps</h2>
+          <p>Features that work alongside Shared Departures.</p>
+        </header>
+        <div class="fgrid fgrid--3">
+          <a class="fcard fcard--biz" href="../../features/smart-tour-calendar/" data-reveal-card><span class="fcard__ic"><i class="bi bi-calendar3" aria-hidden="true"></i></span><h3>Smart Tour Calendar</h3><p>Every trip, day by day.</p><span class="fcard__more">Explore <i class="bi bi-arrow-right" aria-hidden="true"></i></span></a>
+          <a class="fcard fcard--biz" href="../../features/check-in-check-out-reports/" data-reveal-card><span class="fcard__ic"><i class="bi bi-door-open" aria-hidden="true"></i></span><h3>Check-in / Check-out Reports</h3><p>Arrivals and departures, ready.</p><span class="fcard__more">Explore <i class="bi bi-arrow-right" aria-hidden="true"></i></span></a>
+          <a class="fcard fcard--biz" href="../../features/smart-itinerary-builder/" data-reveal-card><span class="fcard__ic"><i class="bi bi-map" aria-hidden="true"></i></span><h3>Smart Itinerary Builder</h3><p>Day-wise plans and quotes.</p><span class="fcard__more">Explore <i class="bi bi-arrow-right" aria-hidden="true"></i></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="sol-final" id="demo" aria-labelledby="final-title">
+      <div class="container">
+        <div class="sol-final__box" data-reveal>
+          <h2 id="final-title">Choose your growth. Fill every seat, oversell none.</h2>
+          <p>Book a short demo and we will set up a sample workspace with your own departures.</p>
+          <div class="sol-final__cta">
+            <a class="btn btn-pill btn-pill--white" href="../../contact.html?topic=demo">Request a Demo <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn btn-pill btn-pill--outline-light" href="../../index.html">Explore Mogli</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand brand--dark" href="../../index.html" aria-label="Mogli home"><svg class="brand__mark" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false"><path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="6" r="2.3" fill="currentColor"/></svg><span class="brand__word">mogli</span></a>
+          <p class="site-footer__tag">Travel management software for agencies, tour operators and DMCs.</p>
+        </div>
+        <nav aria-label="Features" class="site-footer__features"><h3>Features</h3><ul><li><a href="../../features/auto-lead-capture/">Auto Lead Capture</a></li><li><a href="../../features/auto-lead-distribution/">Auto Lead Distribution</a></li><li><a href="../../features/follow-ups-and-reminders/">Advanced Follow-ups &amp; Reminders</a></li><li><a href="../../features/real-time-reports/">Real-Time Reports</a></li><li><a href="../../features/smart-itinerary-builder/">Smart Itinerary Builder</a></li><li><a href="../../features/pricing-and-markup/">Pricing &amp; Mark-up</a></li><li><a href="../../features/smart-tour-calendar/">Smart Tour Calendar</a></li><li><a href="../../features/check-in-check-out-reports/">Check-in / Check-out Reports</a></li><li><a href="../../features/shared-departures/">Shared Departures</a></li><li><a href="../../features/real-time-payment-tracking/">Real-Time Payment Tracking</a></li><li><a href="../../features/proforma-invoice/">Proforma Invoice</a></li><li><a href="../../features/suppliers-ledger/">Suppliers Ledger</a></li><li><a href="../../features/bulk-rate-import/">Bulk Rate Import</a></li><li><a href="../../features/smart-price-handling/">Smart Price Handling</a></li><li><a href="../../features/channel-management/">Channel Management</a></li><li><a href="../../features/user-management-and-roles/">User Management &amp; Roles</a></li></ul></nav>
+        <nav aria-label="Solutions"><h3>Solutions</h3><ul><li><a href="../../solutions-for/dmcs/">DMCs</a></li><li><a href="../../solutions-for/international-inbound-tour-operators/">International Inbound Tour Operators</a></li><li><a href="../../solutions-for/outbound-tour-operators/">Outbound Tour Operators</a></li><li><a href="../../solutions-for/b2b-hotel-consolidators/">B2B Hotel Consolidators</a></li><li><a href="../../solutions-for/global-travel-agents/">Global Travel Agents</a></li><li><a href="../../solutions-for/hospitality-industry/">Hospitality Industry</a></li></ul></nav>
+        <nav aria-label="Company"><h3>Company</h3><ul><li><a href="../../about.html">About</a></li><li><a href="../../pricing.html">Pricing</a></li><li><a href="../../contact.html">Contact</a></li><li><a href="../../privacy-policy.html">Privacy Policy</a></li><li><a href="../../terms.html">Terms of service</a></li></ul></nav>
+      </div>
+      <p class="site-footer__copy"><span>&copy; 2026 Mogli. All rights reserved.</span><span class="site-footer__safe">safe travels &#10038;</span><a href="../../privacy-policy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+  <script src="../../js/solutions.js"></script>
+  <script src="../../js/feature.js"></script>
+</body>
+</html>

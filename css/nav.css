@@ -1,0 +1,173 @@
+/* =====================================================================
+   Mogli — nav.css   (navigation bar + Product dropdown + Solutions mega menu)
+   Loaded LAST on every page. One theme for all pages:
+     • index, over the hero photo, before scrolling  -> white text on transparent
+     • everything else (scrolled index, solutions, privacy) -> dark ink, same
+       frosted white bar, same green "Get Started" button
+   The dropdown panels are the same white card on every page.
+   Structure (grid, hamburger, collapse) stays in style.css.
+   ===================================================================== */
+
+/* ---------- 1. Tokens ---------- */
+.site-nav {
+  --nav-h: 4.5rem;
+  --nav-fg: #fff;
+  --nav-line: rgba(255, 255, 255, .55);
+  --nav-hover: rgba(255, 255, 255, .16);
+  --nav-solid-bg: var(--lime, #c8f227);
+  --nav-solid-fg: var(--on-lime, #141e09);
+  --nav-ring: #fff;
+  background-color: transparent;
+  box-shadow: 0 1px 0 transparent;
+}
+/* Ink theme: scrolled, or any light page */
+.site-nav.is-scrolled,
+body.sol .site-nav {
+  --nav-fg: var(--ink, #141e09);
+  --nav-line: rgba(20, 30, 9, .28);
+  --nav-hover: rgba(20, 30, 9, .07);
+  --nav-solid-bg: var(--lime, #c8f227);
+  --nav-solid-fg: var(--on-lime, #141e09);
+  --nav-ring: var(--focus, #36731a);
+}
+.site-nav.is-scrolled {
+  background-color: rgba(255, 255, 255, .88);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: 0 1px 0 rgba(20, 30, 9, .08);
+}
+.site-nav :focus-visible { outline: 2px solid var(--nav-ring); outline-offset: 3px; }
+
+/* ---------- 2. Bar ---------- */
+.site-nav .navbar { padding: .75rem 0; min-height: var(--nav-h); }
+.brand__word { transform: translateY(-1px); }
+
+.site-nav .nav-link {
+  padding: .5rem 1rem; border-radius: 999px;
+  color: var(--nav-fg); font-size: 1rem; letter-spacing: -.01em; line-height: 1.4;
+  transition: color .2s ease, background-color .2s ease;
+}
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus-visible,
+.site-nav .nav-link.show,
+.site-nav .nav-link.active { color: var(--nav-fg); background-color: var(--nav-hover); }
+.site-nav .dropdown-toggle::after { display: none; }
+.nav-caret { font-size: .68rem; margin-left: .3rem; transition: transform .2s ease; }
+.nav-link.show .nav-caret { transform: rotate(180deg); }
+
+.nav-actions { display: flex; align-items: center; gap: .6rem; }
+.nav-actions .btn {
+  min-height: 2.75rem; padding: .5rem 1.25rem; font-size: .95rem; line-height: 1.2;
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+}
+.nav-actions .btn-pill--outline { color: var(--nav-fg); background: transparent; border: 1px solid var(--nav-line); }
+.nav-actions .btn-pill--outline:hover,
+.nav-actions .btn-pill--outline:focus-visible { color: var(--nav-fg); background: var(--nav-hover); border-color: var(--nav-fg); }
+.nav-actions .btn-pill--solid { color: var(--nav-solid-fg); background: var(--nav-solid-bg); border: 1px solid var(--nav-solid-bg); }
+.nav-actions .btn-pill--solid:hover,
+.nav-actions .btn-pill--solid:focus-visible { color: var(--nav-solid-fg); background: var(--nav-solid-bg); border-color: var(--nav-solid-bg); box-shadow: 0 8px 18px -10px rgba(20, 30, 9, .55); }
+
+/* ---------- 3. Dropdown panels (Product + Solutions) ---------- */
+.mogli-menu {
+  min-width: 21rem; padding: .6rem; margin-top: .7rem !important;
+  background: #fff;
+  border: 1px solid rgba(20, 30, 9, .08); border-radius: 20px;
+  box-shadow: 0 28px 60px -24px rgba(20, 30, 9, .38), 0 2px 8px rgba(20, 30, 9, .06);
+}
+.mogli-menu.show { animation: navMenuIn .16s ease-out both; }
+@keyframes navMenuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+.mogli-menu .dropdown-item {
+  display: flex; align-items: flex-start; gap: .8rem;
+  padding: .65rem .75rem; border-radius: 14px;
+  color: var(--ink, #141e09); white-space: normal;
+  transition: background-color .15s ease;
+}
+.mogli-menu .dropdown-item:hover,
+.mogli-menu .dropdown-item:focus,
+.mogli-menu .dropdown-item:active,
+.mogli-menu .dropdown-item.active { background: var(--brand-mint-wash, #f6fce2); color: var(--ink, #141e09); }
+.mogli-menu .mi {
+  flex: none; width: 2.25rem; height: 2.25rem; border-radius: 12px;
+  display: grid; place-items: center;
+  background: var(--brand-mint-soft, #eefacb); color: var(--cta, #26541c);
+  transition: background-color .15s ease, color .15s ease;
+}
+.mogli-menu .dropdown-item:hover .mi,
+.mogli-menu .dropdown-item:focus .mi { background: var(--brand-mint, #e0f7a6); }
+.mogli-menu b { display: block; font-weight: inherit; font-size: .95rem; line-height: 1.25; letter-spacing: -.01em; color: var(--ink, #141e09); }
+.mogli-menu small { display: block; margin-top: .1rem; font-size: .82rem; line-height: 1.3; color: #4d5b53; }
+
+/* ---------- 4. Solutions mega menu ---------- */
+.mega__h { margin: 0 0 .5rem; padding: 0 .75rem; font-size: .75rem; letter-spacing: .09em; text-transform: uppercase; color: #4d5b53; }
+.mega__list { list-style: none; margin: 0; padding: 0; }
+
+@media (min-width: 992px) {
+  .dropdown--mega { position: static; }
+  .mogli-menu.mega {
+    left: 50%; right: auto; top: 100%; transform: translateX(-50%);
+    width: min(56rem, calc(100vw - 2.5rem)); min-width: 0; padding: 1.1rem;
+    border-radius: 24px;
+  }
+  .mogli-menu.mega.show { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 1rem; animation-name: navMegaIn; }
+  @keyframes navMegaIn { from { opacity: 0; transform: translate(-50%, -6px); } to { opacity: 1; transform: translate(-50%, 0); } }
+  .mega__col { padding-top: .85rem; }
+  .mega__list--two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .1rem .25rem; }
+  .mega__col--alt { padding: .85rem .35rem .5rem; background: var(--brand-mint-wash, #f6fce2); border-radius: 18px; }
+  .mega__col--alt .dropdown-item:hover,
+  .mega__col--alt .dropdown-item:focus { background: #fff; }
+
+  /* Features mega menu: three columns of categories */
+  .mogli-menu.mega.mega--3 { width: min(66rem, calc(100vw - 2.5rem)); max-height: calc(100vh - var(--nav-h) - 1.5rem); max-height: calc(100dvh - var(--nav-h) - 1.5rem); overflow-y: auto; }
+  .mogli-menu.mega.mega--3.show { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+  .mega--3 .mega__col { padding: .85rem .35rem .5rem; }
+  .mega--3 .mega__h:not(:first-child) { margin-top: 1rem; }
+  .mega--3 .mega__col:not(.mega__col--alt) { padding-inline: .25rem; }
+  .mega--3 .dropdown-item { padding: .55rem .65rem; }
+  .mega--3 .mi { width: 2rem; height: 2rem; border-radius: 10px; font-size: .95rem; }
+  .mega--3 small { font-size: .78rem; }
+}
+
+/* ---------- 5. Mobile / tablet: the opened menu is its own white card ---------- */
+@media (max-width: 991.98px) {
+  .site-nav { --nav-h: 4rem; }
+  /* the bar itself: frosted white on light pages, transparent over the index photo until scrolled */
+  body.sol .site-nav:not(.is-scrolled) {
+    background-color: rgba(255, 255, 255, .86);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  }
+  .site-nav .navbar-collapse {
+    margin-top: .6rem; padding: .85rem;
+    background: #fff; border: 1px solid rgba(20, 30, 9, .08); border-radius: 22px;
+    box-shadow: 0 28px 60px -24px rgba(20, 30, 9, .38);
+    max-height: calc(100vh - 5.5rem); max-height: calc(100dvh - 5.5rem);
+    overflow-y: auto; overscroll-behavior: contain;
+    /* ink theme inside the card, whatever the bar is doing */
+    --nav-fg: var(--ink, #141e09);
+    --nav-line: rgba(20, 30, 9, .28);
+    --nav-hover: rgba(20, 30, 9, .07);
+    --nav-solid-bg: var(--lime, #c8f227);
+    --nav-solid-fg: var(--on-lime, #141e09);
+    --nav-ring: var(--focus, #36731a);
+  }
+  .site-nav .nav-link { padding: .8rem .75rem; }
+  .mogli-menu, .mogli-menu.mega {
+    min-width: 0; margin-top: 0 !important; padding: 0 0 0 .5rem;
+    background: transparent; border: 0; box-shadow: none; border-radius: 0;
+    -webkit-backdrop-filter: none; backdrop-filter: none; animation: none;
+  }
+  .mega__col + .mega__col { margin-top: .5rem; }
+  .mega__h { padding-top: .5rem; }
+  .mega--3 .mega__h:not(:first-child) { margin-top: .75rem; }
+  .nav-actions {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .6rem;
+    margin-top: .75rem; padding-top: 1rem; border-top: 1px solid rgba(20, 30, 9, .1);
+  }
+  .nav-actions .btn { width: 100%; }
+}
+@media (max-width: 420px) { .nav-actions { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mogli-menu.show { animation: none; }
+  .nav-caret, .site-nav .nav-link, .mogli-menu .dropdown-item { transition: none; }
+}

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software for the Hospitality Industry | Mogli</title>
+  <meta name="description" content="Mogli is travel management software for the hospitality industry: rates and availability, connected channels, check-ins, guest follow-ups and reports for hotels and resorts.">
+  <meta name="theme-color" content="#ffffff">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" href="../../assets/fonts/diatype-light.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="../../css/style.css" rel="stylesheet">
+  <!-- Solutions page styles (loaded after style.css; reuses its tokens, nav, buttons and FAQ) -->
+  <link href="../../css/solutions.css" rel="stylesheet">
+  <link href="../../css/system.css" rel="stylesheet">
+  <link href="../../css/nav.css" rel="stylesheet">
+</head>
+
+<body class="sol" id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-nav " id="siteNav">
+    <nav class="navbar navbar-expand-lg" aria-label="Primary">
+      <div class="container-fluid nav-shell">
+
+        <a class="navbar-brand brand" href="../../index.html" aria-label="Mogli home">
+          <svg class="brand__mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false">
+            <path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="6" r="2.3" fill="currentColor"/>
+          </svg>
+          <span class="brand__word">mogli</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-bars" aria-hidden="true"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav nav-center">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-placeholder-link>
+                Product <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <ul class="dropdown-menu mogli-menu">
+                <li><a class="dropdown-item" href="../../features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Enquiry inbox</b><small>Capture and track every lead</small></span></a></li>
+                <li><a class="dropdown-item" href="../../index.html#benefits"><span class="mi"><i class="bi bi-map"></i></span><span><b>Itinerary builder</b><small>Day-wise plans and packages</small></span></a></li>
+                <li><a class="dropdown-item" href="../../index.html#benefits"><span class="mi"><i class="bi bi-calendar-check"></i></span><span><b>Bookings</b><small>Confirmations, vouchers, suppliers</small></span></a></li>
+                <li><a class="dropdown-item" href="../../index.html#benefits"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Payments</b><small>Links, instalments, reminders</small></span></a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown dropdown--mega">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-current="page">
+                Solutions <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu mogli-menu mega">
+                <div class="mega__col"><p class="mega__h">Who we work with</p><ul class="mega__list mega__list--two"><li><a class="dropdown-item" href="../../solutions-for/dmcs/"><span class="mi"><i class="bi bi-geo-alt"></i></span><span><b>DMCs</b><small>Quotes, contracts and operations in one system</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/international-inbound-tour-operators/"><span class="mi"><i class="bi bi-box-arrow-in-down"></i></span><span><b>International Inbound Tour Operators</b><small>Serve overseas agents without the chaos</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/outbound-tour-operators/"><span class="mi"><i class="bi bi-box-arrow-up-right"></i></span><span><b>Outbound Tour Operators</b><small>Multi-country trips with margins protected</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/b2b-hotel-consolidators/"><span class="mi"><i class="bi bi-building"></i></span><span><b>B2B Hotel Consolidators</b><small>Rates, inventory and channels in one place</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/global-travel-agents/"><span class="mi"><i class="bi bi-globe2"></i></span><span><b>Global Travel Agents</b><small>Quote and collect across countries</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/hospitality-industry/"><span class="mi"><i class="bi bi-house-door"></i></span><span><b>Hospitality Industry</b><small>Hotels, resorts and stays on one system</small></span></a></li></ul></div>
+                <div class="mega__col mega__col--alt"><p class="mega__h">What we solve for</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Leads &amp; enquiries</b><small>One inbox for every source</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/dmcs/#z-quote"><span class="mi"><i class="bi bi-map"></i></span><span><b>Quotes &amp; itineraries</b><small>Priced plans, margin in view</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/dmcs/#z-suppliers"><span class="mi"><i class="bi bi-diagram-3"></i></span><span><b>Suppliers &amp; contracts</b><small>Rates, seasons and validity</small></span></a></li><li><a class="dropdown-item" href="../../solutions-for/dmcs/#z-payments"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Payments &amp; accounting</b><small>Paid, pending and overdue</small></span></a></li></ul></div>
+              </div>
+            </li>
+            <!--features-nav--><li class="nav-item dropdown dropdown--mega dropdown--features">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                Features <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu mogli-menu mega mega--3">
+                <div class="mega__col"><p class="mega__h">CRM &amp; Sales Automation</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Auto Lead Capture</b><small>Every enquiry in one list</small></span></a></li><li><a class="dropdown-item" href="../../features/auto-lead-distribution/"><span class="mi"><i class="bi bi-diagram-2"></i></span><span><b>Auto Lead Distribution</b><small>Right lead, right person</small></span></a></li><li><a class="dropdown-item" href="../../features/follow-ups-and-reminders/"><span class="mi"><i class="bi bi-bell"></i></span><span><b>Advanced Follow-ups &amp; Reminders</b><small>Never forget a follow-up</small></span></a></li><li><a class="dropdown-item" href="../../features/real-time-reports/"><span class="mi"><i class="bi bi-graph-up"></i></span><span><b>Real-Time Reports</b><small>Sales, profit and operations</small></span></a></li></ul><p class="mega__h">Smart Itinerary Builder</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/smart-itinerary-builder/"><span class="mi"><i class="bi bi-map"></i></span><span><b>Smart Itinerary Builder</b><small>Day-wise plans and quotes</small></span></a></li><li><a class="dropdown-item" href="../../features/pricing-and-markup/"><span class="mi"><i class="bi bi-tag"></i></span><span><b>Pricing &amp; Mark-up</b><small>Cost, margin and profit per trip</small></span></a></li></ul></div>
+                <div class="mega__col"><p class="mega__h">Booking &amp; Reservation</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/smart-tour-calendar/"><span class="mi"><i class="bi bi-calendar3"></i></span><span><b>Smart Tour Calendar</b><small>Every trip, day by day</small></span></a></li><li><a class="dropdown-item" href="../../features/check-in-check-out-reports/"><span class="mi"><i class="bi bi-door-open"></i></span><span><b>Check-in / Check-out Reports</b><small>Arrivals and departures, ready</small></span></a></li><li><a class="dropdown-item" href="../../features/shared-departures/"><span class="mi"><i class="bi bi-people"></i></span><span><b>Shared Departures</b><small>Group services, organised</small></span></a></li></ul><p class="mega__h">Payment &amp; Collection Tracking</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/real-time-payment-tracking/"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Real-Time Payment Tracking</b><small>Paid, pending and overdue</small></span></a></li><li><a class="dropdown-item" href="../../features/proforma-invoice/"><span class="mi"><i class="bi bi-file-earmark-text"></i></span><span><b>Proforma Invoice</b><small>Invoices from the booking</small></span></a></li><li><a class="dropdown-item" href="../../features/suppliers-ledger/"><span class="mi"><i class="bi bi-journal-text"></i></span><span><b>Suppliers Ledger</b><small>What you owe every supplier</small></span></a></li></ul></div>
+                <div class="mega__col mega__col--alt"><p class="mega__h">Supplier &amp; Contracting Management</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/bulk-rate-import/"><span class="mi"><i class="bi bi-cloud-upload"></i></span><span><b>Bulk Rate Import</b><small>Upload and update in bulk</small></span></a></li><li><a class="dropdown-item" href="../../features/smart-price-handling/"><span class="mi"><i class="bi bi-currency-exchange"></i></span><span><b>Smart Price Handling</b><small>Rates and availability, night by night</small></span></a></li><li><a class="dropdown-item" href="../../features/channel-management/"><span class="mi"><i class="bi bi-diagram-3"></i></span><span><b>Channel Management</b><small>Every channel in sync</small></span></a></li></ul><p class="mega__h">Administration &amp; Security</p><ul class="mega__list"><li><a class="dropdown-item" href="../../features/user-management-and-roles/"><span class="mi"><i class="bi bi-person-gear"></i></span><span><b>User Management &amp; Roles</b><small>The right access for every person</small></span></a></li></ul></div>
+              </div>
+            </li><!--/features-nav-->
+            <li class="nav-item"><a class="nav-link" href="../../index.html#blog">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="../../pricing.html">Pricing</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <a class="btn btn-pill btn-pill--outline" href="../../contact.html?topic=demo"><i class="bi bi-play-fill" aria-hidden="true"></i> Book a Demo</a>
+            <a class="btn btn-pill btn-pill--solid" href="../../contact.html">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="sol-hero" aria-labelledby="sol-title">
+      <div class="container">
+        <p class="sol-eyebrow" data-hero>Mogli for the hospitality industry</p>
+        <h1 id="sol-title" data-hero>Fill Every Room. Welcome Every Guest Without the Scramble.</h1>
+        <p class="sol-hero__lead" data-hero>Hotels and resorts sell through many channels while looking after guests on the ground. Mogli keeps rates, rooms, check-ins and guest communication in one system, so your team can focus on service.</p>
+        <div class="sol-hero__cta" data-hero>
+          <a class="btn btn-pill btn-pill--dark" href="#demo">Request a Demo <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn-pill btn-pill--ghost" href="#why">See how it works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAIN POINTS ===================== -->
+    <section class="sol-pain" aria-labelledby="pain-title">
+      <div class="sol-pain__grid">
+        <div class="sol-pain__head" data-reveal>
+          <h2 id="pain-title">Daily struggles before Mogli</h2>
+          <p>The challenges hotels and resorts face when sales and operations run on separate tools.</p>
+          <a class="btn btn-pill btn-pill--line" href="#demo">Start Now</a>
+        </div>
+        <div class="sol-pain__scroller" id="painScroller" tabindex="0" aria-label="Challenges the hospitality industry faces, scroll sideways for more">
+          <div class="sol-pain__track">
+            <article class="pcard pcard--yellow" data-pcard>
+              <h3>Rates and rooms in many places</h3>
+              <p>Rates, rooms left and stop-sales are updated by hand on each channel, so every change is a chance to miss one.</p>
+              <svg class="pcard__art" viewBox="0 0 280 200" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="40" y="26" width="200" height="140" rx="14" fill="#fffbe0"/><path d="M40 62h200M40 98h200M40 134h200M106 26v140M172 26v140"/><rect x="48" y="34" width="50" height="20" rx="4" fill="#d3f1b8"/><rect x="114" y="70" width="50" height="20" rx="4" fill="#fff"/><rect x="180" y="106" width="52" height="20" rx="4" fill="#e0f7a6"/><circle cx="212" cy="148" r="22" fill="#fdf07d"/><path d="M203 148h18M212 139v18"/></svg>
+              <button class="pcard__go" type="button" aria-label="Next challenge"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            </article>
+            <article class="pcard pcard--mint" data-pcard>
+              <h3>Slow guest replies</h3>
+              <p>Booking requests and guest questions wait while staff look up availability across tabs and files.</p>
+              <svg class="pcard__art" viewBox="0 0 280 200" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="52" y="40" width="120" height="132" rx="12" fill="#fff"/><path d="M72 70h80M72 92h80M72 114h54"/><circle cx="188" cy="112" r="52" fill="#fdf07d"/><circle cx="188" cy="112" r="38" fill="#fff"/><path d="M188 88v26l16 10"/></svg>
+              <button class="pcard__go" type="button" aria-label="Next challenge"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            </article>
+            <article class="pcard pcard--lilac" data-pcard>
+              <h3>Manual guest paperwork</h3>
+              <p>Reconfirmations, follow-ups and documents are written one by one, which takes time from guests on site.</p>
+              <svg class="pcard__art" viewBox="0 0 280 200" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="58" y="24" width="150" height="150" rx="14" fill="#fff"/><path d="M58 24v150M82 52h100M82 76h100M82 100h64"/><rect x="152" y="112" width="84" height="64" rx="8" fill="#fdf07d" transform="rotate(8 194 144)"/><path d="M178 132q2-14 16-14t14 12q0 9-10 12v6M193 156v.5" transform="rotate(8 194 144)"/></svg>
+              <button class="pcard__go" type="button" aria-label="Next challenge"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            </article>
+            <article class="pcard pcard--sky" data-pcard>
+              <h3>Overbooking and service gaps</h3>
+              <p>When channels and the front desk do not see the same data, double bookings and missed arrivals follow.</p>
+              <svg class="pcard__art" viewBox="0 0 280 200" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="44" y="34" width="170" height="136" rx="14" fill="#fff"/><path d="M44 68h170M84 24v20M174 24v20"/><path d="M178 92l42 72h-84z" fill="#ffd9d1" transform="translate(-4 4)"/><path d="M174 116v22M174 150v.5" stroke-width="3"/><rect x="62" y="86" width="44" height="18" rx="4" fill="#d3f1b8"/><rect x="62" y="116" width="44" height="18" rx="4" fill="#e0f7a6"/></svg>
+              <button class="pcard__go" type="button" aria-label="Next challenge"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ZIG-ZAG ===================== -->
+    <section class="sol-why" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <header class="sol-why__head" data-reveal>
+          <p class="sol-why__eyebrow">Why Mogli is suitable for you</p>
+          <h2 id="why-title">Built by travel professionals, for hotels and resorts that run on service</h2>
+        </header>
+        <div class="zz">
+        <article class="zz__item" data-zz>
+          <div class="zz__text" data-zz-text>
+            <p class="zz__tag">Rates and availability</p>
+            <h3>Rooms left to sell, in one grid</h3>
+            <p>See rooms left, occupancy and the rate for every room type and date. Set a rate, stop sales or add a booking or hold from the same screen.</p>
+            <a class="btn btn-pill btn-pill--dark zz__cta" href="#demo">Explore rates and availability <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="zz__media" data-zz-media><img src="../../assets/images/solutions/quote.webp" width="1896" height="864" loading="lazy" alt="Mogli rates and availability grid with rooms left to sell night by night"></div>
+        </article>
+        <article class="zz__item zz__item--flip" data-zz>
+          <div class="zz__text" data-zz-text>
+            <p class="zz__tag">Check-ins</p>
+            <h3>Know who is arriving and leaving</h3>
+            <p>Hotel check-ins and check-outs across all bookings appear in one list with guest, booking and stay dates, so the front desk is ready.</p>
+            <a class="btn btn-pill btn-pill--dark zz__cta" href="#demo">Explore check-ins <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="zz__media" data-zz-media><img src="../../assets/images/solutions/checkins.webp" width="1896" height="864" loading="lazy" alt="Mogli hotel check-in and check-out list across all bookings"></div>
+        </article>
+        <article class="zz__item" data-zz>
+          <div class="zz__text" data-zz-text>
+            <p class="zz__tag">Channels</p>
+            <h3>Every channel, one source of truth</h3>
+            <p>Where your property is sold is shown in one place, and a booking on any channel takes the room off all the others.</p>
+            <a class="btn btn-pill btn-pill--dark zz__cta" href="#demo">Explore channels <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="zz__media" data-zz-media><img src="../../assets/images/solutions/channels.webp" width="1896" height="864" loading="lazy" alt="Mogli channels page with connected booking channels and sync status"></div>
+        </article>
+        <article class="zz__item zz__item--flip" data-zz>
+          <div class="zz__text" data-zz-text>
+            <p class="zz__tag">Activities and experiences</p>
+            <h3>Sell more than the room</h3>
+            <p>Keep tours, tickets and experiences with their supplier and price, and add them to a stay as part of one booking.</p>
+            <a class="btn btn-pill btn-pill--dark zz__cta" href="#demo">Explore activities <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="zz__media" data-zz-media><img src="../../assets/images/solutions/activities.webp" width="1896" height="864" loading="lazy" alt="Mogli activities list with destination, supplier, pricing and status"></div>
+        </article>
+        <article class="zz__item" data-zz>
+          <div class="zz__text" data-zz-text>
+            <p class="zz__tag">Guest follow-ups</p>
+            <h3>Reconfirmations drafted for you</h3>
+            <p>Pre-arrival reconfirmations and service follow-ups are written from the booking, ready to review and send.</p>
+            <a class="btn btn-pill btn-pill--dark zz__cta" href="#demo">Explore follow-ups <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="zz__media" data-zz-media><img src="../../assets/images/solutions/followups.webp" width="1896" height="864" loading="lazy" alt="Mogli automatic follow-ups for supplier reconfirmations"></div>
+        </article>
+        <article class="zz__item zz__item--flip" data-zz>
+          <div class="zz__text" data-zz-text>
+            <p class="zz__tag">Reports</p>
+            <h3>A clear view of sales and operations</h3>
+            <p>The MIS dashboard shows leads, conversions, booked value, money to collect and trips departing soon for any period.</p>
+            <a class="btn btn-pill btn-pill--dark zz__cta" href="#demo">Explore reports <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="zz__media" data-zz-media><img src="../../assets/images/solutions/mis.webp" width="1896" height="864" loading="lazy" alt="Mogli MIS dashboard with leads, converted trips, booked value and profit"></div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BEFORE / AFTER ===================== -->
+    <section class="sol-compare" aria-labelledby="cmp-title">
+      <div class="container">
+        <header class="sol-center" data-reveal>
+          <h2 id="cmp-title">Your workflow, with and without Mogli</h2>
+          <p>Same property, same guests. A very different week.</p>
+        </header>
+        <div class="cmp">
+          <article class="cmp__col cmp__col--old" data-reveal-card>
+            <h3>The old way</h3>
+            <ul><li><i class="bi bi-x-lg" aria-hidden="true"></i>Rates changed by hand on every channel</li><li><i class="bi bi-x-lg" aria-hidden="true"></i>Availability checked across several tabs</li><li><i class="bi bi-x-lg" aria-hidden="true"></i>Check-ins tracked on paper or in chats</li><li><i class="bi bi-x-lg" aria-hidden="true"></i>Reconfirmations written one at a time</li><li><i class="bi bi-x-lg" aria-hidden="true"></i>Overbookings discovered at the desk</li><li><i class="bi bi-x-lg" aria-hidden="true"></i>Reports assembled at month end</li></ul>
+          </article>
+          <article class="cmp__col cmp__col--new" data-reveal-card>
+            <h3>The Mogli way</h3>
+            <ul><li><i class="bi bi-check-lg" aria-hidden="true"></i>One grid for rates and rooms left to sell</li><li><i class="bi bi-check-lg" aria-hidden="true"></i>Availability visible instantly</li><li><i class="bi bi-check-lg" aria-hidden="true"></i>Check-ins and check-outs in one list</li><li><i class="bi bi-check-lg" aria-hidden="true"></i>Follow-ups drafted from the booking</li><li><i class="bi bi-check-lg" aria-hidden="true"></i>A booking on any channel updates the rest</li><li><i class="bi bi-check-lg" aria-hidden="true"></i>A live dashboard for bookings and revenue</li></ul>
+            <a class="btn btn-pill btn-pill--dark" href="#demo">Request a Demo <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURE GRID ===================== -->
+    <section class="sol-grid" aria-labelledby="grid-title">
+      <div class="container">
+        <header class="sol-center" data-reveal>
+          <h2 id="grid-title">Everything you get with Mogli</h2>
+          <p>One connected workspace for your property.</p>
+        </header>
+        <div class="fgrid fgrid--3">
+          <article class="fcard" data-reveal-card><span class="fcard__ic"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span><h3>Rates and availability</h3><p>Manage rates, rooms left and stop-sales for every room type and date.</p></article>
+          <article class="fcard" data-reveal-card><span class="fcard__ic"><i class="bi bi-diagram-3" aria-hidden="true"></i></span><h3>Channel management</h3><p>Keep every connected channel aligned with the same inventory.</p></article>
+          <article class="fcard" data-reveal-card><span class="fcard__ic"><i class="bi bi-door-open" aria-hidden="true"></i></span><h3>Check-ins and check-outs</h3><p>See arrivals and departures across all bookings in one list.</p></article>
+          <article class="fcard" data-reveal-card><span class="fcard__ic"><i class="bi bi-chat-left-text" aria-hidden="true"></i></span><h3>Guest follow-ups</h3><p>Send reconfirmations and service follow-ups drafted from the booking.</p></article>
+          <article class="fcard" data-reveal-card><span class="fcard__ic"><i class="bi bi-stars" aria-hidden="true"></i></span><h3>Activities</h3><p>Add tours and experiences to a stay as part of one booking.</p></article>
+          <article class="fcard" data-reveal-card><span class="fcard__ic"><i class="bi bi-bar-chart-line" aria-hidden="true"></i></span><h3>Reports</h3><p>Follow bookings, collections and payables with ready reports.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sol-grid sol-grid--tight" aria-labelledby="biz-title">
+      <div class="container">
+        <header class="sol-center" data-reveal>
+          <h2 id="biz-title">Built for every kind of travel business</h2>
+          <p>Mogli adapts to how your business sells. Explore the other solutions.</p>
+        </header>
+        <div class="fgrid fgrid--3">
+          <a class="fcard fcard--biz" href="../b2b-hotel-consolidators/" data-reveal-card><span class="fcard__ic"><i class="bi bi-building" aria-hidden="true"></i></span><h3>B2B Hotel Consolidators</h3><p>Rates, inventory and channels in one place.</p><span class="fcard__more">Explore <i class="bi bi-arrow-right" aria-hidden="true"></i></span></a>
+          <a class="fcard fcard--biz" href="../global-travel-agents/" data-reveal-card><span class="fcard__ic"><i class="bi bi-globe2" aria-hidden="true"></i></span><h3>Global Travel Agents</h3><p>Quote and collect across countries.</p><span class="fcard__more">Explore <i class="bi bi-arrow-right" aria-hidden="true"></i></span></a>
+          <a class="fcard fcard--biz" href="../dmcs/" data-reveal-card><span class="fcard__ic"><i class="bi bi-geo-alt" aria-hidden="true"></i></span><h3>DMCs</h3><p>Quotes, contracts and operations in one system.</p><span class="fcard__more">Explore <i class="bi bi-arrow-right" aria-hidden="true"></i></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="sol-faq" aria-labelledby="sfaq-title">
+      <div class="faq" id="sfaq">
+        <div class="faq__head" data-reveal>
+          <p class="eyebrow-alt">FAQs by hospitality teams</p>
+          <h2 id="sfaq-title">Questions hotels and resorts ask us</h2>
+        </div>
+        <ul class="faq__list">
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq1" aria-expanded="false" aria-controls="sa1"><span>Is Mogli suitable for hotels and resorts?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa1" role="region" aria-labelledby="sq1"><div><p>Yes. Mogli includes rates and availability, connected channels, bookings, check-ins and reports for properties that sell and host guests.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq2" aria-expanded="false" aria-controls="sa2"><span>Can I manage rates and rooms for different room types?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa2" role="region" aria-labelledby="sq2"><div><p>Yes. A grid shows rooms left, occupancy and the rate for each room type and date, and you can set rates or stop sales from the same screen.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq3" aria-expanded="false" aria-controls="sa3"><span>Can I avoid double bookings across channels?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa3" role="region" aria-labelledby="sq3"><div><p>Yes. When a room is booked on any connected channel, it is taken off the others.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq4" aria-expanded="false" aria-controls="sa4"><span>Can the front desk see arrivals and departures?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa4" role="region" aria-labelledby="sq4"><div><p>Yes. Check-ins and check-outs across all bookings are listed with guest, booking and stay dates.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq5" aria-expanded="false" aria-controls="sa5"><span>Can I send guest follow-ups from Mogli?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa5" role="region" aria-labelledby="sq5"><div><p>Yes. Reconfirmations and follow-ups are drafted from the booking, so you can review and send them.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq6" aria-expanded="false" aria-controls="sa6"><span>Can my team use Mogli together?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa6" role="region" aria-labelledby="sq6"><div><p>Yes. Reservations, front desk and accounts work from the same record, with the access that fits each role.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="sq7" aria-expanded="false" aria-controls="sa7"><span>How do I get started?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="sa7" role="region" aria-labelledby="sq7"><div><p>Book a demo and we will set up a sample workspace with your own property so you can see how it fits.</p></div></div>
+            </li>
+        </ul>
+        <div class="faq__more" data-reveal><a class="btn btn-pill btn-pill--line" href="#demo">Get in touch with us</a></div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="sol-final" id="demo" aria-labelledby="final-title">
+      <div class="container">
+        <div class="sol-final__box" data-reveal>
+          <h2 id="final-title">Choose your growth. Run your property with Mogli.</h2>
+          <p>Book a short demo and we will set up a sample workspace for your property.</p>
+          <div class="sol-final__cta">
+            <a class="btn btn-pill btn-pill--white" href="../../contact.html?topic=demo">Request a Demo <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn btn-pill btn-pill--outline-light" href="../../index.html">Explore Mogli</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand brand--dark" href="../../index.html" aria-label="Mogli home"><svg class="brand__mark" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false"><path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="6" r="2.3" fill="currentColor"/></svg><span class="brand__word">mogli</span></a>
+          <p class="site-footer__tag">Travel management software for agencies, tour operators and DMCs.</p>
+        </div>
+        <nav aria-label="Features" class="site-footer__features"><h3>Features</h3><ul><li><a href="../../features/auto-lead-capture/">Auto Lead Capture</a></li><li><a href="../../features/auto-lead-distribution/">Auto Lead Distribution</a></li><li><a href="../../features/follow-ups-and-reminders/">Advanced Follow-ups &amp; Reminders</a></li><li><a href="../../features/real-time-reports/">Real-Time Reports</a></li><li><a href="../../features/smart-itinerary-builder/">Smart Itinerary Builder</a></li><li><a href="../../features/pricing-and-markup/">Pricing &amp; Mark-up</a></li><li><a href="../../features/smart-tour-calendar/">Smart Tour Calendar</a></li><li><a href="../../features/check-in-check-out-reports/">Check-in / Check-out Reports</a></li><li><a href="../../features/shared-departures/">Shared Departures</a></li><li><a href="../../features/real-time-payment-tracking/">Real-Time Payment Tracking</a></li><li><a href="../../features/proforma-invoice/">Proforma Invoice</a></li><li><a href="../../features/suppliers-ledger/">Suppliers Ledger</a></li><li><a href="../../features/bulk-rate-import/">Bulk Rate Import</a></li><li><a href="../../features/smart-price-handling/">Smart Price Handling</a></li><li><a href="../../features/channel-management/">Channel Management</a></li><li><a href="../../features/user-management-and-roles/">User Management &amp; Roles</a></li></ul></nav>
+        <nav aria-label="Solutions"><h3>Solutions</h3><ul><li><a href="../../solutions-for/dmcs/">DMCs</a></li><li><a href="../../solutions-for/international-inbound-tour-operators/">International Inbound Tour Operators</a></li><li><a href="../../solutions-for/outbound-tour-operators/">Outbound Tour Operators</a></li><li><a href="../../solutions-for/b2b-hotel-consolidators/">B2B Hotel Consolidators</a></li><li><a href="../../solutions-for/global-travel-agents/">Global Travel Agents</a></li><li><a href="../../solutions-for/hospitality-industry/">Hospitality Industry</a></li></ul></nav>
+        <nav aria-label="Company"><h3>Company</h3><ul><li><a href="../../about.html">About</a></li><li><a href="../../pricing.html">Pricing</a></li><li><a href="../../contact.html">Contact</a></li><li><a href="../../privacy-policy.html">Privacy Policy</a></li><li><a href="../../terms.html">Terms of service</a></li></ul></nav>
+      </div>
+      <p class="site-footer__copy"><span>&copy; 2026 Mogli. All rights reserved.</span><span class="site-footer__safe">safe travels &#10038;</span><a href="../../privacy-policy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+  <script src="../../js/solutions.js"></script>
+</body>
+</html>

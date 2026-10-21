@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mogli — Travel management software for agencies and tour operators</title>
+  <meta name="description" content="Mogli brings your travel business together: customer enquiries, custom itineraries, bookings, payments and growth in one place.">
+  <meta name="theme-color" content="#8fa7bf">
+
+  <!-- Marks the page as "JS available" before first paint. main.js removes the "js" class again
+       if GSAP fails to load, so content is never stuck invisible. -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Preload what the first screen needs: the site font and the hero photograph -->
+  <link rel="preload" href="assets/fonts/diatype-light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/images/travel-hero.webp" as="image" fetchpriority="high">
+
+  <!-- Bootstrap 5 + Bootstrap Icons (the site font is local: assets/fonts/diatype-light.woff2, declared in css/style.css) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" crossorigin="anonymous">
+
+  <!-- Mogli styles (loaded after Bootstrap so tokens and overrides win) -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/system.css" rel="stylesheet">
+  <link href="css/nav.css" rel="stylesheet">
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- =====================================================================
+       FIXED CINEMATIC SCENE
+       One fixed backdrop shared by the hero and the product showcase.
+       The photograph is assets/images/travel-hero.webp. If that file is missing,
+       the layered SVG landscape below is shown instead.
+       ===================================================================== -->
+  <div class="scene" aria-hidden="true">
+    <div class="scene__intro">
+      <div class="scene__inner">
+        <div class="scene__sky"></div>
+
+        <!-- Fallback landscape: distant mountains -->
+        <svg class="layer layer--far" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" focusable="false">
+          <defs>
+            <linearGradient id="gFarBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb0c2"/><stop offset="1" stop-color="#d9dbd2"/></linearGradient>
+            <linearGradient id="gFarFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8497ab"/><stop offset="1" stop-color="#d2d5cb"/></linearGradient>
+          </defs>
+          <path fill="url(#gFarBack)" opacity=".8" d="M0 600 C100 560 180 505 300 500 C420 495 470 540 580 530 C700 520 760 470 900 470 C1040 470 1100 515 1220 512 C1340 509 1440 470 1600 490 L1600 1000 L0 1000 Z"/>
+          <path fill="url(#gFarFront)" opacity=".92" d="M0 650 L0 595 C90 580 170 548 270 548 C390 548 450 585 560 575 C690 563 740 520 880 524 C1000 527 1060 560 1180 556 C1310 552 1400 520 1500 526 C1550 529 1580 538 1600 545 L1600 1000 L0 1000 Z"/>
+        </svg>
+
+        <!-- Fallback landscape: sunlit mid hills -->
+        <svg class="layer layer--mid" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" focusable="false">
+          <defs>
+            <linearGradient id="gMid1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d2c48a"/><stop offset=".35" stop-color="#aab16f"/><stop offset="1" stop-color="#7f9b55"/></linearGradient>
+            <linearGradient id="gMid2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8da857"/><stop offset=".5" stop-color="#5f8340"/><stop offset="1" stop-color="#46682f"/></linearGradient>
+            <radialGradient id="gSun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe2a3" stop-opacity=".8"/><stop offset="1" stop-color="#ffe2a3" stop-opacity="0"/></radialGradient>
+          </defs>
+          <path fill="url(#gMid1)" d="M0 705 C130 655 270 612 430 620 C575 627 650 668 770 660 C905 651 990 590 1140 584 C1290 578 1420 622 1600 596 L1600 1000 L0 1000 Z"/>
+          <ellipse cx="1180" cy="622" rx="440" ry="96" fill="url(#gSun)"/>
+          <path fill="url(#gMid2)" d="M0 770 C160 712 320 700 470 722 C620 744 705 708 845 698 C1005 687 1105 728 1255 708 C1405 688 1505 648 1600 658 L1600 1000 L0 1000 Z"/>
+        </svg>
+
+        <!-- Fallback landscape: foreground hills -->
+        <svg class="layer layer--near" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" focusable="false">
+          <defs>
+            <linearGradient id="gNear1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d9d41"/><stop offset=".45" stop-color="#4a7430"/><stop offset="1" stop-color="#2f5424"/></linearGradient>
+            <linearGradient id="gNear2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f652a"/><stop offset="1" stop-color="#213f1e"/></linearGradient>
+            <radialGradient id="gNearGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff0b8" stop-opacity=".35"/><stop offset="1" stop-color="#fff0b8" stop-opacity="0"/></radialGradient>
+          </defs>
+          <path fill="url(#gNear1)" d="M0 850 C150 782 330 752 520 780 C700 807 790 858 965 848 C1140 838 1265 768 1425 758 C1510 753 1565 762 1600 772 L1600 1000 L0 1000 Z"/>
+          <ellipse cx="1130" cy="800" rx="360" ry="70" fill="url(#gNearGlow)"/>
+          <path fill="url(#gNear2)" d="M0 935 C200 876 420 868 640 897 C860 926 1005 910 1185 877 C1345 848 1485 858 1600 888 L1600 1000 L0 1000 Z"/>
+        </svg>
+
+        <!-- Photograph (assets/images/travel-hero.webp); shown once the file loads, see main.js -->
+        <div class="scene__photo"></div>
+        <!-- Contrast tint for the headline; slides away with the sky -->
+        <div class="scene__scrim"></div>
+      </div>
+    </div>
+    <div class="scene__grain"></div>
+  </div>
+
+  <!-- =====================================================================
+       NAVIGATION
+       ===================================================================== -->
+  <header class="site-nav" id="siteNav" data-intro>
+    <nav class="navbar navbar-expand-lg" aria-label="Primary">
+      <div class="container-fluid nav-shell">
+
+        <a class="navbar-brand brand" href="#top" aria-label="Mogli, back to top">
+          <svg class="brand__mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false">
+            <path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="6" r="2.3" fill="currentColor"/>
+          </svg>
+          <span class="brand__word">mogli</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-bars" aria-hidden="true"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav nav-center">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-placeholder-link>
+                Product <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <ul class="dropdown-menu mogli-menu">
+                <li><a class="dropdown-item" href="features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Enquiry inbox</b><small>Capture and track every lead</small></span></a></li>
+                <li><a class="dropdown-item" href="#benefits"><span class="mi"><i class="bi bi-map"></i></span><span><b>Itinerary builder</b><small>Day-wise plans and packages</small></span></a></li>
+                <li><a class="dropdown-item" href="#benefits"><span class="mi"><i class="bi bi-calendar-check"></i></span><span><b>Bookings</b><small>Confirmations, vouchers, suppliers</small></span></a></li>
+                <li><a class="dropdown-item" href="#benefits"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Payments</b><small>Links, instalments, reminders</small></span></a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown dropdown--mega">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                Solutions <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu mogli-menu mega">
+                <div class="mega__col"><p class="mega__h">Who we work with</p><ul class="mega__list mega__list--two"><li><a class="dropdown-item" href="solutions-for/dmcs/"><span class="mi"><i class="bi bi-geo-alt"></i></span><span><b>DMCs</b><small>Quotes, contracts and operations in one system</small></span></a></li><li><a class="dropdown-item" href="solutions-for/international-inbound-tour-operators/"><span class="mi"><i class="bi bi-box-arrow-in-down"></i></span><span><b>International Inbound Tour Operators</b><small>Serve overseas agents without the chaos</small></span></a></li><li><a class="dropdown-item" href="solutions-for/outbound-tour-operators/"><span class="mi"><i class="bi bi-box-arrow-up-right"></i></span><span><b>Outbound Tour Operators</b><small>Multi-country trips with margins protected</small></span></a></li><li><a class="dropdown-item" href="solutions-for/b2b-hotel-consolidators/"><span class="mi"><i class="bi bi-building"></i></span><span><b>B2B Hotel Consolidators</b><small>Rates, inventory and channels in one place</small></span></a></li><li><a class="dropdown-item" href="solutions-for/global-travel-agents/"><span class="mi"><i class="bi bi-globe2"></i></span><span><b>Global Travel Agents</b><small>Quote and collect across countries</small></span></a></li><li><a class="dropdown-item" href="solutions-for/hospitality-industry/"><span class="mi"><i class="bi bi-house-door"></i></span><span><b>Hospitality Industry</b><small>Hotels, resorts and stays on one system</small></span></a></li></ul></div>
+                <div class="mega__col mega__col--alt"><p class="mega__h">What we solve for</p><ul class="mega__list"><li><a class="dropdown-item" href="features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Leads &amp; enquiries</b><small>One inbox for every source</small></span></a></li><li><a class="dropdown-item" href="solutions-for/dmcs/#z-quote"><span class="mi"><i class="bi bi-map"></i></span><span><b>Quotes &amp; itineraries</b><small>Priced plans, margin in view</small></span></a></li><li><a class="dropdown-item" href="solutions-for/dmcs/#z-suppliers"><span class="mi"><i class="bi bi-diagram-3"></i></span><span><b>Suppliers &amp; contracts</b><small>Rates, seasons and validity</small></span></a></li><li><a class="dropdown-item" href="solutions-for/dmcs/#z-payments"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Payments &amp; accounting</b><small>Paid, pending and overdue</small></span></a></li></ul></div>
+              </div>
+            </li>
+            <!--features-nav--><li class="nav-item dropdown dropdown--mega dropdown--features">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                Features <i class="bi bi-chevron-down nav-caret" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu mogli-menu mega mega--3">
+                <div class="mega__col"><p class="mega__h">CRM &amp; Sales Automation</p><ul class="mega__list"><li><a class="dropdown-item" href="features/auto-lead-capture/"><span class="mi"><i class="bi bi-inbox"></i></span><span><b>Auto Lead Capture</b><small>Every enquiry in one list</small></span></a></li><li><a class="dropdown-item" href="features/auto-lead-distribution/"><span class="mi"><i class="bi bi-diagram-2"></i></span><span><b>Auto Lead Distribution</b><small>Right lead, right person</small></span></a></li><li><a class="dropdown-item" href="features/follow-ups-and-reminders/"><span class="mi"><i class="bi bi-bell"></i></span><span><b>Advanced Follow-ups &amp; Reminders</b><small>Never forget a follow-up</small></span></a></li><li><a class="dropdown-item" href="features/real-time-reports/"><span class="mi"><i class="bi bi-graph-up"></i></span><span><b>Real-Time Reports</b><small>Sales, profit and operations</small></span></a></li></ul><p class="mega__h">Smart Itinerary Builder</p><ul class="mega__list"><li><a class="dropdown-item" href="features/smart-itinerary-builder/"><span class="mi"><i class="bi bi-map"></i></span><span><b>Smart Itinerary Builder</b><small>Day-wise plans and quotes</small></span></a></li><li><a class="dropdown-item" href="features/pricing-and-markup/"><span class="mi"><i class="bi bi-tag"></i></span><span><b>Pricing &amp; Mark-up</b><small>Cost, margin and profit per trip</small></span></a></li></ul></div>
+                <div class="mega__col"><p class="mega__h">Booking &amp; Reservation</p><ul class="mega__list"><li><a class="dropdown-item" href="features/smart-tour-calendar/"><span class="mi"><i class="bi bi-calendar3"></i></span><span><b>Smart Tour Calendar</b><small>Every trip, day by day</small></span></a></li><li><a class="dropdown-item" href="features/check-in-check-out-reports/"><span class="mi"><i class="bi bi-door-open"></i></span><span><b>Check-in / Check-out Reports</b><small>Arrivals and departures, ready</small></span></a></li><li><a class="dropdown-item" href="features/shared-departures/"><span class="mi"><i class="bi bi-people"></i></span><span><b>Shared Departures</b><small>Group services, organised</small></span></a></li></ul><p class="mega__h">Payment &amp; Collection Tracking</p><ul class="mega__list"><li><a class="dropdown-item" href="features/real-time-payment-tracking/"><span class="mi"><i class="bi bi-wallet2"></i></span><span><b>Real-Time Payment Tracking</b><small>Paid, pending and overdue</small></span></a></li><li><a class="dropdown-item" href="features/proforma-invoice/"><span class="mi"><i class="bi bi-file-earmark-text"></i></span><span><b>Proforma Invoice</b><small>Invoices from the booking</small></span></a></li><li><a class="dropdown-item" href="features/suppliers-ledger/"><span class="mi"><i class="bi bi-journal-text"></i></span><span><b>Suppliers Ledger</b><small>What you owe every supplier</small></span></a></li></ul></div>
+                <div class="mega__col mega__col--alt"><p class="mega__h">Supplier &amp; Contracting Management</p><ul class="mega__list"><li><a class="dropdown-item" href="features/bulk-rate-import/"><span class="mi"><i class="bi bi-cloud-upload"></i></span><span><b>Bulk Rate Import</b><small>Upload and update in bulk</small></span></a></li><li><a class="dropdown-item" href="features/smart-price-handling/"><span class="mi"><i class="bi bi-currency-exchange"></i></span><span><b>Smart Price Handling</b><small>Rates and availability, night by night</small></span></a></li><li><a class="dropdown-item" href="features/channel-management/"><span class="mi"><i class="bi bi-diagram-3"></i></span><span><b>Channel Management</b><small>Every channel in sync</small></span></a></li></ul><p class="mega__h">Administration &amp; Security</p><ul class="mega__list"><li><a class="dropdown-item" href="features/user-management-and-roles/"><span class="mi"><i class="bi bi-person-gear"></i></span><span><b>User Management &amp; Roles</b><small>The right access for every person</small></span></a></li></ul></div>
+              </div>
+            </li><!--/features-nav-->
+            <li class="nav-item"><a class="nav-link" href="#blog">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <a class="btn btn-pill btn-pill--outline" href="contact.html?topic=demo"><i class="bi bi-play-fill" aria-hidden="true"></i> Book a Demo</a>
+            <a class="btn btn-pill btn-pill--solid" href="contact.html">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero + showcase share one wrapper so the scene parallax can span both -->
+    <div class="stage" id="stage">
+
+      <!-- =================================================================
+           HERO
+           ================================================================= -->
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="container hero__inner">
+
+          <p class="hero__eyebrow" data-intro>The smarter way to travel</p>
+
+          <h1 class="hero__title" id="hero-title">
+            <span class="line"><span class="line__inner">Every Journey.</span></span>
+          </h1>
+
+          <!-- Rotating statements in a slim translucent pill. All six are stacked in one grid cell,
+               so the pill never changes size while the text changes. -->
+          <div class="hero__statement" data-intro>
+            <div class="statement-stack" aria-live="off">
+              <p class="statement is-active">Your Entire Travel Business, Simplified.</p>
+              <p class="statement" aria-hidden="true">From Enquiries to Confirmed Bookings.</p>
+              <p class="statement" aria-hidden="true">Every Journey, Organized in One Place.</p>
+              <p class="statement" aria-hidden="true">Smarter Tools for Growing Travel Agencies.</p>
+              <p class="statement" aria-hidden="true">Less Manual Work, More Time to Grow.</p>
+              <p class="statement" aria-hidden="true">Everything Your Travel Business Needs.</p>
+            </div>
+          </div>
+
+          <p class="hero__desc" data-intro>
+            Mogli brings your travel business together — from customer enquiries and custom itineraries to bookings, payments, and growth. Everything you need, all in one place.
+          </p>
+
+          <div class="hero__cta" data-intro>
+            <a class="btn btn-pill btn-pill--white" href="#showcase">Explore Mogli <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn btn-pill btn-pill--dark" href="contact.html?topic=demo"><i class="bi bi-play-fill" aria-hidden="true"></i> Book a Demo</a>
+          </div>
+        </div>
+         <div class="showcase mac2" id="showcase" aria-label="Mogli product preview">
+  
+
+        <div class="mac2__scale">
+          <div class="mac2__lid">
+            <div class="mac2__back">
+              <div class="mac2__backin">
+                <svg class="mac2__logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="6" r="2.3" fill="currentColor"/></svg>
+              </div>
+            </div>
+            <div class="mac2__screen">
+              <div class="mac2__glass"></div>
+              <img src="assets/images/dashboard-laptop.webp" alt="Mogli home dashboard with leads, conversions, booked value and trip profit" width="1896" height="864" decoding="async">
+            </div>
+          </div>
+
+          <div class="mac2__base" aria-hidden="true">
+            <div class="mac2__bar"><span></span></div>
+            <div class="mac2__deck">
+              <div class="mac2__spk"><div></div></div>
+              <div class="mac2__keys"><div class="kbd"><div class="kb-row"><div class="kb"><div class="kb__i" style="width:2.5rem;align-items:flex-end;justify-content:flex-start;padding:0 0 2px 4px"><div class="kb__t" style="align-items:flex-start">esc</div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-brightness-low-fill" aria-hidden="true"></i><span class="mt">F1</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-brightness-high-fill" aria-hidden="true"></i><span class="mt">F2</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-table" aria-hidden="true"></i><span class="mt">F3</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-search" aria-hidden="true"></i><span class="mt">F4</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-mic-fill" aria-hidden="true"></i><span class="mt">F5</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-moon-fill" aria-hidden="true"></i><span class="mt">F6</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-skip-backward-fill" aria-hidden="true"></i><span class="mt">F7</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-skip-end-fill" aria-hidden="true"></i><span class="mt">F8</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-skip-forward-fill" aria-hidden="true"></i><span class="mt">F9</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-volume-mute-fill" aria-hidden="true"></i><span class="mt">F10</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-volume-down-fill" aria-hidden="true"></i><span class="mt">F11</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><i class="bi bi-volume-up-fill" aria-hidden="true"></i><span class="mt">F12</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span class="pwr"><span></span></span></div></div></div></div><div class="kb-row"><div class="kb"><div class="kb__i"><div class="kb__t"><span>~</span><span class="mt">`</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>!</span><span class="mt">1</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>@</span><span class="mt">2</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>#</span><span class="mt">3</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>$</span><span class="mt">4</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>%</span><span class="mt">5</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>^</span><span class="mt">6</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>&amp;</span><span class="mt">7</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>*</span><span class="mt">8</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>(</span><span class="mt">9</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>)</span><span class="mt">0</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>&mdash;</span><span class="mt">_</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>+</span><span class="mt">=</span></div></div></div><div class="kb"><div class="kb__i" style="width:2.5rem;align-items:flex-end;justify-content:flex-end;padding:0 4px 2px 0"><div class="kb__t" style="align-items:flex-end">delete</div></div></div></div><div class="kb-row"><div class="kb"><div class="kb__i" style="width:2.5rem;align-items:flex-end;justify-content:flex-start;padding:0 0 2px 4px"><div class="kb__t" style="align-items:flex-start">tab</div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>Q</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>W</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>E</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>R</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>T</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>Y</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>U</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>I</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>O</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>P</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>{</span><span class="mt">[</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>}</span><span class="mt">]</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>|</span><span class="mt">\</span></div></div></div></div><div class="kb-row"><div class="kb"><div class="kb__i" style="width:2.8rem;align-items:flex-end;justify-content:flex-start;padding:0 0 2px 4px"><div class="kb__t" style="align-items:flex-start">caps lock</div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>A</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>S</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>D</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>F</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>G</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>H</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>J</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>K</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>L</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>:</span><span class="mt">;</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>"</span><span class="mt">'</span></div></div></div><div class="kb"><div class="kb__i" style="width:2.85rem;align-items:flex-end;justify-content:flex-end;padding:0 4px 2px 0"><div class="kb__t" style="align-items:flex-end">return</div></div></div></div><div class="kb-row"><div class="kb"><div class="kb__i" style="width:3.65rem;align-items:flex-end;justify-content:flex-start;padding:0 0 2px 4px"><div class="kb__t" style="align-items:flex-start">shift</div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>Z</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>X</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>C</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>V</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>B</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>N</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>M</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>&lt;</span><span class="mt">,</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>&gt;</span><span class="mt">.</span></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t"><span>?</span><span class="mt">/</span></div></div></div><div class="kb"><div class="kb__i" style="width:3.65rem;align-items:flex-end;justify-content:flex-end;padding:0 4px 2px 0"><div class="kb__t" style="align-items:flex-end">shift</div></div></div></div><div class="kb-row"><div class="kb"><div class="kb__i"><div class="kb__t" style="height:100%;justify-content:space-between;padding:4px 0"><div class="kb2"><div class="kb2__r"><span>fn</span></div><div class="kb2__l"><i class="bi bi-globe" aria-hidden="true"></i></div></div></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t" style="height:100%;justify-content:space-between;padding:4px 0"><div class="kb2"><div class="kb2__r"><i class="bi bi-chevron-up" aria-hidden="true"></i></div><div class="kb2__l"><span>control</span></div></div></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t" style="height:100%;justify-content:space-between;padding:4px 0"><div class="kb2"><div class="kb2__r"><span>⌥</span></div><div class="kb2__l"><span>option</span></div></div></div></div></div><div class="kb"><div class="kb__i" style="width:2rem"><div class="kb__t" style="height:100%;justify-content:space-between;padding:4px 0"><div class="kb2"><div class="kb2__r"><span>⌘</span></div><div class="kb2__l"><span>command</span></div></div></div></div></div><div class="kb"><div class="kb__i" style="width:8.2rem"><div class="kb__t"></div></div></div><div class="kb"><div class="kb__i" style="width:2rem"><div class="kb__t" style="height:100%;justify-content:space-between;padding:4px 0"><div class="kb2"><div class="kb2__l"><span>⌘</span></div><div class="kb2__l"><span>command</span></div></div></div></div></div><div class="kb"><div class="kb__i"><div class="kb__t" style="height:100%;justify-content:space-between;padding:4px 0"><div class="kb2"><div class="kb2__l"><span>⌥</span></div><div class="kb2__l"><span>option</span></div></div></div></div></div><div class="kb-arrows"><div class="kb"><div class="kb__i" style="height:.75rem;width:1.5rem"><div class="kb__t"><i class="bi bi-caret-up-fill" aria-hidden="true"></i></div></div></div><div class="kb-arrows__r"><div class="kb"><div class="kb__i" style="height:.75rem;width:1.5rem"><div class="kb__t"><i class="bi bi-caret-left-fill" aria-hidden="true"></i></div></div></div><div class="kb"><div class="kb__i" style="height:.75rem;width:1.5rem"><div class="kb__t"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div></div></div><div class="kb"><div class="kb__i" style="height:.75rem;width:1.5rem"><div class="kb__t"><i class="bi bi-caret-right-fill" aria-hidden="true"></i></div></div></div></div></div></div></div></div>
+              <div class="mac2__spk"><div></div></div>
+            </div>
+            <div class="mac2__pad"></div>
+            <div class="mac2__lip"></div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+    </div><!-- /#stage -->
+
+    <!-- =====================================================================
+         PLATFORM TABS: product preview per audience (reusable section)
+         Tabs, screenshots and feature sets are linked by the data-tab / data-shot / data-set keys.
+         ===================================================================== -->
+    <section class="platform" id="platform" aria-labelledby="platform-title">
+      <div class="platform__wrap">
+        <div class="platform__intro" data-reveal>
+          <p class="eyebrow-alt">Built for modern travel businesses</p>
+          <h2 id="platform-title">Everything You Need to Run Your Travel Business</h2>
+          <p class="platform__lead">From managing customer enquiries to organizing itineraries and bookings, Mogli brings your travel operations together in one powerful, easy-to-use platform.</p>
+        </div>
+
+        <!-- Scroll-driven tabs: on desktop this block becomes a sticky runway and scrolling through it switches the tab (createRail in main.js) -->
+        <div class="platform__rail rail" id="platformRail" data-rail="4">
+        <div class="rail__sticky">
+        <div class="ptabs-scroll" data-reveal>
+          <div class="ptabs" role="tablist" aria-label="Mogli for different teams">
+          <button class="ptab is-active" type="button" role="tab" id="tab-agencies" aria-controls="platformPanel"
+                  aria-selected="true" tabindex="0" data-tab="agencies">
+            <span class="ptab__title"><i class="ptab__dot" aria-hidden="true"></i>Travel Agencies</span>
+            <span class="ptab__desc">Turn every enquiry into a confirmed booking</span>
+          </button>
+          <button class="ptab" type="button" role="tab" id="tab-operators" aria-controls="platformPanel"
+                  aria-selected="false" tabindex="-1" data-tab="operators">
+            <span class="ptab__title"><i class="ptab__dot" aria-hidden="true"></i>Tour Operators</span>
+            <span class="ptab__desc">Plan every departure and keep trips organized</span>
+          </button>
+          <button class="ptab" type="button" role="tab" id="tab-sales" aria-controls="platformPanel"
+                  aria-selected="false" tabindex="-1" data-tab="sales">
+            <span class="ptab__title"><i class="ptab__dot" aria-hidden="true"></i>Sales Teams</span>
+            <span class="ptab__desc">Follow up on every lead and see what is closing</span>
+          </button>
+          <button class="ptab" type="button" role="tab" id="tab-operations" aria-controls="platformPanel"
+                  aria-selected="false" tabindex="-1" data-tab="operations">
+            <span class="ptab__title"><i class="ptab__dot" aria-hidden="true"></i>Operations Teams</span>
+            <span class="ptab__desc">Coordinate bookings, payments and daily tasks</span>
+          </button>
+          </div>
+        </div>
+
+        <div class="platform__panel" id="platformPanel" role="tabpanel" aria-labelledby="tab-agencies" tabindex="0">
+          <div class="pstage" data-reveal>
+            <div class="browser">
+              <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="browser__screen">
+            <img class="pshot is-active" data-shot="agencies" src="assets/images/tabs/travel-agencies.webp"
+                 alt="Mogli home dashboard for travel agencies with leads, conversions and pipeline by stage" width="1896" height="864" loading="lazy" decoding="async">
+            <img class="pshot" data-shot="operators" src="assets/images/tabs/tour-operators.webp"
+                 alt="Mogli movement chart for tour operators showing every trip day by day" width="1896" height="864" loading="lazy" decoding="async">
+            <img class="pshot" data-shot="sales" src="assets/images/tabs/sales-teams.webp"
+                 alt="Mogli profit report with final profit, profit still to move and per-booking margin" width="1896" height="864" loading="lazy" decoding="async">
+            <img class="pshot" data-shot="operations" src="assets/images/tabs/operations-teams.webp"
+                 alt="Mogli rates and availability grid with rooms left to sell night by night" width="1896" height="864" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <div class="pfeatures" data-reveal>
+            <div class="pfeatures__set is-active" data-set="agencies">
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-columns-gap" aria-hidden="true"></i></span>
+                <h3>Organized Workflows</h3>
+                <p>Keep customer enquiries, trip details, and daily operations organized in one workspace.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                <h3>Efficient Team Collaboration</h3>
+                <p>Help your team manage travel enquiries, coordinate tasks, and keep customer information accessible.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-calendar2-check" aria-hidden="true"></i></span>
+                <h3>Complete Booking Visibility</h3>
+                <p>Get a clearer view of bookings, itineraries, and travel operations from one centralized platform.</p>
+              </article>
+            </div>
+            <div class="pfeatures__set" data-set="operators" aria-hidden="true">
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-map" aria-hidden="true"></i></span>
+                <h3>Organized Itineraries</h3>
+                <p>Build day-wise itineraries and keep every trip detail in one workspace.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                <h3>Shared Trip Planning</h3>
+                <p>Help your team work from the same plan, with trip information accessible to everyone who needs it.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-calendar2-check" aria-hidden="true"></i></span>
+                <h3>Clear Departure Visibility</h3>
+                <p>Get a clearer view of bookings and travel operations across every trip from one platform.</p>
+              </article>
+            </div>
+            <div class="pfeatures__set" data-set="sales" aria-hidden="true">
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-inbox" aria-hidden="true"></i></span>
+                <h3>Organized Enquiries</h3>
+                <p>Capture customer enquiries and keep every lead organized in one workspace.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-chat-dots" aria-hidden="true"></i></span>
+                <h3>Coordinated Follow-ups</h3>
+                <p>Help your team coordinate follow-ups and keep customer information accessible.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></span>
+                <h3>Pipeline Visibility</h3>
+                <p>Get a clearer view of leads moving toward confirmed bookings from one centralized platform.</p>
+              </article>
+            </div>
+            <div class="pfeatures__set" data-set="operations" aria-hidden="true">
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-list-check" aria-hidden="true"></i></span>
+                <h3>Organized Operations</h3>
+                <p>Keep trip details, tasks, and daily operations organized in one workspace.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                <h3>Efficient Team Collaboration</h3>
+                <p>Help your team coordinate tasks and keep customer information accessible.</p>
+              </article>
+              <article class="pfeature">
+                <span class="pfeature__icon"><i class="bi bi-calendar2-check" aria-hidden="true"></i></span>
+                <h3>Complete Booking Visibility</h3>
+                <p>Get a clearer view of bookings, payments, and travel operations from one centralized platform.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        </div><!-- /.rail__sticky -->
+        </div><!-- /#platformRail -->
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TOOLS: bento grid (steps card with role chips, then 2 and 3 card rows). Mock UIs are placeholders built in HTML/CSS.
+         ===================================================================== -->
+    <section class="tools" id="tools" aria-labelledby="tools-title">
+      <div class="tools__wrap">
+        <div class="tools__head" data-reveal>
+          <h2 id="tools-title">Every tool your team needs to run and grow your travel business.</h2>
+          <p>Bring every team together to plan, book and collect, with Mogli alongside them.</p>
+        </div>
+
+        <div class="tchips" role="tablist" aria-label="Mogli for each team" data-reveal>
+          <button class="tchip is-active" type="button" role="tab" id="tchip-sales" aria-controls="toolsHero" aria-selected="true" tabindex="0" data-variant="sales">Sales</button>
+          <button class="tchip" type="button" role="tab" id="tchip-planning" aria-controls="toolsHero" aria-selected="false" tabindex="-1" data-variant="planning">Planning</button>
+          <button class="tchip" type="button" role="tab" id="tchip-ops" aria-controls="toolsHero" aria-selected="false" tabindex="-1" data-variant="ops">Operations</button>
+          <button class="tchip" type="button" role="tab" id="tchip-accounts" aria-controls="toolsHero" aria-selected="false" tabindex="-1" data-variant="accounts">Accounts</button>
+        </div>
+
+        <article class="tcard tcard--hero" id="toolsHero" role="tabpanel" aria-labelledby="tchip-sales">
+          <div class="tvariants tcard__copy">
+            <div class="tvariant is-active" data-variant="sales">
+              <h3 class="tcard__title"><b>Follow-ups</b> keep every enquiry moving.</h3>
+              <p class="tcard__text">Give every enquiry an owner, a status and a reminder, so nothing slips through.</p>
+              <a class="tcard__btn" href="#demo">Get started</a>
+            </div>
+            <div class="tvariant" data-variant="planning" aria-hidden="true">
+              <h3 class="tcard__title"><b>Itineraries</b> turn trip ideas into a clear plan.</h3>
+              <p class="tcard__text">Start from a package, shape each day and share a polished proposal.</p>
+              <a class="tcard__btn" href="#demo">Get started</a>
+            </div>
+            <div class="tvariant" data-variant="ops" aria-hidden="true">
+              <h3 class="tcard__title"><b>Checklists</b> keep every booking on track.</h3>
+              <p class="tcard__text">Confirm hotels, flights and transfers, and see at a glance what is still pending.</p>
+              <a class="tcard__btn" href="#demo">Get started</a>
+            </div>
+            <div class="tvariant" data-variant="accounts" aria-hidden="true">
+              <h3 class="tcard__title"><b>Payments</b> show who has paid and what is due.</h3>
+              <p class="tcard__text">Send payment links, record instalments and chase what is still outstanding.</p>
+              <a class="tcard__btn" href="#demo">Get started</a>
+            </div>
+          </div>
+          <div class="tvariants tcard__mock">
+            <div class="tvariant is-active" data-variant="sales" aria-hidden="true">
+              <div class="mock mock--steps">
+                <div class="mock__bar"><span>Checklist</span></div>
+                <h4 class="mock__h">Steps</h4>
+                <span class="ctag ctag--pink">Aarav · Sales</span>
+                <ol class="steps">
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Capture the enquiry</b><p>Log the lead from a call, WhatsApp, web form or email, with the trip details.</p></div></li>
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Assign an owner</b><p>Give the enquiry to a team member so everyone knows who is replying.</p></div></li>
+                <li class=""><span class="steps__dot">3</span><div><b>Send the quote</b><p>Share the itinerary and price as a <span class="tag"><i class="bi bi-file-earmark-text"></i> Proposal</span>, then set a follow-up reminder.</p></div></li>
+                <li class=""><span class="steps__dot">4</span><div><b>Confirm the trip</b><p>Move the enquiry to confirmed once the customer approves.</p></div></li>
+                </ol>
+              </div>
+            </div>
+            <div class="tvariant" data-variant="planning" aria-hidden="true">
+              <div class="mock mock--steps">
+                <div class="mock__bar"><span>Checklist</span></div>
+                <h4 class="mock__h">Steps</h4>
+                <span class="ctag ctag--pink">Priya · Planning</span>
+                <ol class="steps">
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Start from a package</b><p>Pick a reusable package or begin with a blank itinerary.</p></div></li>
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Add day-wise plans</b><p>Fill in stays, transfers and activities for every day of the trip.</p></div></li>
+                <li class=""><span class="steps__dot">3</span><div><b>Price the trip</b><p>Add costs and a margin, then review the total in one <span class="tag"><i class="bi bi-calculator"></i> Summary</span>.</p></div></li>
+                <li class=""><span class="steps__dot">4</span><div><b>Share the proposal</b><p>Send a clean proposal your customer can read and approve.</p></div></li>
+                </ol>
+              </div>
+            </div>
+            <div class="tvariant" data-variant="ops" aria-hidden="true">
+              <div class="mock mock--steps">
+                <div class="mock__bar"><span>Checklist</span></div>
+                <h4 class="mock__h">Steps</h4>
+                <span class="ctag ctag--pink">Rahul · Operations</span>
+                <ol class="steps">
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Review the booking</b><p>Check dates, travellers and the services included in the trip.</p></div></li>
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Confirm with suppliers</b><p>Mark each hotel, flight and transfer as pending or confirmed.</p></div></li>
+                <li class=""><span class="steps__dot">3</span><div><b>Send the vouchers</b><p>Share confirmations with the customer from the <span class="tag"><i class="bi bi-ticket-perforated"></i> Booking</span> page.</p></div></li>
+                <li class=""><span class="steps__dot">4</span><div><b>Close the trip</b><p>Wrap up the booking once the travellers are back.</p></div></li>
+                </ol>
+              </div>
+            </div>
+            <div class="tvariant" data-variant="accounts" aria-hidden="true">
+              <div class="mock mock--steps">
+                <div class="mock__bar"><span>Checklist</span></div>
+                <h4 class="mock__h">Steps</h4>
+                <span class="ctag ctag--pink">Neha · Accounts</span>
+                <ol class="steps">
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Send the payment link</b><p>Share a link so the customer can pay the first instalment.</p></div></li>
+                <li class="is-done"><span class="steps__dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><b>Record the instalment</b><p>Log each payment against the booking as it arrives.</p></div></li>
+                <li class=""><span class="steps__dot">3</span><div><b>Check what is due</b><p>See who is <span class="tag"><i class="bi bi-wallet2"></i> Partial</span> and who still owes the balance.</p></div></li>
+                <li class=""><span class="steps__dot">4</span><div><b>Send a reminder</b><p>Nudge customers whose payments are overdue.</p></div></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="tools__row tools__row--2">
+          <article class="tcard tcard--thread">
+            <a class="tcard__go" href="#demo" aria-label="Learn about collaboration"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            <h3 class="tcard__title"><b>Collaboration</b> brings your team into every enquiry</h3>
+            <div class="mock mock--thread">
+              <span class="ctag ctag--pink ctag--a">Meera</span>
+              <span class="ctag ctag--blue ctag--b">Aarav</span>
+              <div class="thread">
+                <div class="msg"><span class="avatar" style="--c:#26541c">MN</span><div><b>Meera Nair <small>2m</small></b><p>Can we keep the Munnar stay on day 2 and hold the same budget?</p></div></div>
+                <div class="msg"><span class="avatar" style="--c:#60a750">AM</span><div><b>Aarav Mehta <small>just now</small></b><p>Done. Munnar first, then the houseboat. Sending the quote now.</p></div></div>
+                <div class="reply">Reply in thread</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tcard tcard--flow">
+            <a class="tcard__go" href="#demo" aria-label="Learn about workflows"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            <h3 class="tcard__title"><b>Workflows</b> keep every trip on track</h3>
+            <div class="mock mock--flow">
+              <span class="fline fline--v fline--v1" aria-hidden="true"></span>
+              <span class="fline fline--v fline--v2" aria-hidden="true"></span>
+              <span class="fline fline--h fline--h1" aria-hidden="true"></span>
+              <span class="fline fline--v fline--v3" aria-hidden="true"></span>
+              <span class="fline fline--h fline--h2" aria-hidden="true"></span>
+              <span class="fline fline--h fline--h3" aria-hidden="true"></span>
+              <div class="fnode fnode--1"><b>Enquiry received</b><small>Assign an owner</small></div>
+              <div class="fnode fnode--2"><b>Quote sent</b><small>Remind in 2 days</small></div>
+              <div class="fnode fnode--3"><b>Customer confirms</b><small>Create the booking</small></div>
+              <div class="fnode fnode--4"><b>Payment due</b><small>Send a payment link</small></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="tools__row tools__row--3">
+          <article class="tcard tcard--records">
+            <a class="tcard__go" href="#demo" aria-label="Learn about customer records"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            <h3 class="tcard__title"><b>Records</b> keep every customer's history together</h3>
+            <div class="mock mock--table">
+              <div class="trow trow--head"><span>Customer</span><span>Trip</span><span></span></div>
+              <div class="trow"><span>Riya Sharma</span><span>Kerala</span><span class="tick"><i class="bi bi-check-lg" aria-hidden="true"></i></span></div>
+              <div class="trow"><span>Kabir Anand</span><span>Bali</span><span class="tick"><i class="bi bi-check-lg" aria-hidden="true"></i></span></div>
+              <div class="trow"><span>Meera Nair</span><span>Rajasthan</span><span class="tick"><i class="bi bi-check-lg" aria-hidden="true"></i></span></div>
+              <div class="trow"><span>Dev Malhotra</span><span>Dubai</span><span class="tick"><i class="bi bi-check-lg" aria-hidden="true"></i></span></div>
+              <div class="trow"><span>Ananya Rao</span><span>Goa</span><span class="tick tick--off"></span></div>
+            </div>
+          </article>
+
+          <article class="tcard tcard--suppliers">
+            <a class="tcard__go" href="#demo" aria-label="Learn about suppliers"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            <h3 class="tcard__title"><b>Suppliers</b> keep hotels, flights and transfers in one list</h3>
+            <div class="mock mock--tiles" aria-hidden="true">
+              <span class="ttile"><i class="bi bi-building"></i></span><span class="ttile"><i class="bi bi-airplane"></i></span><span class="ttile"><i class="bi bi-car-front"></i></span>
+              <span class="ttile"><i class="bi bi-geo-alt"></i></span><span class="ttile ttile--hi"><i class="bi bi-ticket-perforated"></i></span><span class="ttile"><i class="bi bi-camera"></i></span>
+              <span class="ttile"><i class="bi bi-cup-hot"></i></span><span class="ttile"><i class="bi bi-train-front"></i></span><span class="ttile"><i class="bi bi-umbrella"></i></span>
+            </div>
+          </article>
+
+          <article class="tcard tcard--reports">
+            <a class="tcard__go" href="#demo" aria-label="Learn about reports"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            <h3 class="tcard__title"><b>Reports</b> show how your sales are growing</h3>
+            <div class="mock mock--donut">
+              <div class="donut__head"><span>Enquiry conversion</span><strong><span data-count="62">62</span><small>%</small></strong></div>
+              <div class="donut__body">
+                <svg class="donut" viewBox="0 0 100 100" aria-hidden="true"><circle class="donut__bg" cx="50" cy="50" r="40"/><circle class="donut__arc" cx="50" cy="50" r="40" transform="rotate(-90 50 50)"/></svg>
+                <ul class="donut__legend">
+                  <li><i style="--c:#26541c"></i>Confirmed<b>62%</b></li>
+                  <li><i style="--c:#60a750"></i>Quote sent<b>24%</b></li>
+                  <li><i style="--c:#cfd3d9"></i>Lost<b>14%</b></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         HUB: one software for many jobs. Centre logo, connected modules around it.
+         ===================================================================== -->
+    <section class="hub" id="hub" aria-labelledby="hub-title">
+      <div class="hub__wrap">
+        <div class="hub__head" data-reveal>
+          <p class="eyebrow-alt">All in one place</p>
+          <h2 id="hub-title">One software for every part of your travel business</h2>
+          <p>Enquiries, itineraries, bookings, payments, suppliers and reports, all connected, so your team stops switching between tools.</p>
+        </div>
+
+        <div class="hub__stage">
+          <svg class="hub__lines" viewBox="0 0 1200 560" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <g class="hub__paths"><path pathLength="1" d="M600 280 L408 78.4"/><path pathLength="1" d="M600 280 L362.4 178.08"/><path pathLength="1" d="M600 280 L127.2 196"/><path pathLength="1" d="M600 280 L261.6 280"/><path pathLength="1" d="M600 280 L127.2 364"/><path pathLength="1" d="M600 280 L362.4 381.92"/><path pathLength="1" d="M600 280 L408 481.6"/><path pathLength="1" d="M600 280 L792 78.4"/><path pathLength="1" d="M600 280 L823.2 172.48"/><path pathLength="1" d="M600 280 L1047.6 174.16"/><path pathLength="1" d="M600 280 L933.6 255.92"/><path pathLength="1" d="M600 280 L1105.2 316.4"/><path pathLength="1" d="M600 280 L895.2 350"/><path pathLength="1" d="M600 280 L938.4 442.96"/><path pathLength="1" d="M600 280 L726 412.72"/></g>
+            <g class="hub__dots"><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="408" data-y="78.4"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="362.4" data-y="178.08"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="127.2" data-y="196"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="261.6" data-y="280"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="127.2" data-y="364"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="362.4" data-y="381.92"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="408" data-y="481.6"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="792" data-y="78.4"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="823.2" data-y="172.48"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="1047.6" data-y="174.16"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="933.6" data-y="255.92"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="1105.2" data-y="316.4"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="895.2" data-y="350"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="938.4" data-y="442.96"/><circle class="hline__dot" r="4.5" cx="600" cy="280" data-x="726" data-y="412.72"/></g>
+          </svg>
+          <ul class="hub__nodes">
+            <li class="hnode hnode--light" style="--x:34.0;--y:14.0;--d:0"><span class="hnode__dot"><i class="bi bi-chat-dots" aria-hidden="true"></i></span><span class="hnode__label">Enquiries</span></li>
+            <li class="hnode hnode--blue" style="--x:30.2;--y:31.8;--d:1"><span class="hnode__dot"><i class="bi bi-people" aria-hidden="true"></i></span><span class="hnode__label">Customers</span></li>
+            <li class="hnode hnode--dark" style="--x:10.6;--y:35.0;--d:2"><span class="hnode__dot"><i class="bi bi-map" aria-hidden="true"></i></span><span class="hnode__label">Itineraries</span></li>
+            <li class="hnode hnode--light" style="--x:21.8;--y:50.0;--d:3"><span class="hnode__dot"><i class="bi bi-journal-check" aria-hidden="true"></i></span><span class="hnode__label">Bookings</span></li>
+            <li class="hnode hnode--pink" style="--x:10.6;--y:65.0;--d:4"><span class="hnode__dot"><i class="bi bi-building" aria-hidden="true"></i></span><span class="hnode__label">Suppliers</span></li>
+            <li class="hnode hnode--light" style="--x:30.2;--y:68.2;--d:5"><span class="hnode__dot"><i class="bi bi-ticket-perforated" aria-hidden="true"></i></span><span class="hnode__label">Vouchers</span></li>
+            <li class="hnode hnode--blue" style="--x:34.0;--y:86.0;--d:6"><span class="hnode__dot"><i class="bi bi-box-seam" aria-hidden="true"></i></span><span class="hnode__label">Packages</span></li>
+            <li class="hnode hnode--dark" style="--x:66.0;--y:14.0;--d:7"><span class="hnode__dot"><i class="bi bi-credit-card" aria-hidden="true"></i></span><span class="hnode__label">Payments</span></li>
+            <li class="hnode hnode--light" style="--x:68.6;--y:30.8;--d:8"><span class="hnode__dot"><i class="bi bi-bar-chart-line" aria-hidden="true"></i></span><span class="hnode__label">Reports</span></li>
+            <li class="hnode hnode--pink" style="--x:87.3;--y:31.1;--d:9"><span class="hnode__dot"><i class="bi bi-receipt" aria-hidden="true"></i></span><span class="hnode__label">Invoices</span></li>
+            <li class="hnode hnode--blue" style="--x:77.8;--y:45.7;--d:10"><span class="hnode__dot"><i class="bi bi-calendar-event" aria-hidden="true"></i></span><span class="hnode__label">Calendar</span></li>
+            <li class="hnode hnode--light" style="--x:92.1;--y:56.5;--d:11"><span class="hnode__dot"><i class="bi bi-check2-square" aria-hidden="true"></i></span><span class="hnode__label">Tasks</span></li>
+            <li class="hnode hnode--dark" style="--x:74.6;--y:62.5;--d:12"><span class="hnode__dot"><i class="bi bi-chat-left-text" aria-hidden="true"></i></span><span class="hnode__label">Chat</span></li>
+            <li class="hnode hnode--pink" style="--x:78.2;--y:79.1;--d:13"><span class="hnode__dot"><i class="bi bi-globe2" aria-hidden="true"></i></span><span class="hnode__label">Visas</span></li>
+            <li class="hnode hnode--light" style="--x:60.5;--y:73.7;--d:14"><span class="hnode__dot"><i class="bi bi-journal-text" aria-hidden="true"></i></span><span class="hnode__label">Ledgers</span></li>
+          </ul>
+          <div class="hub__core" aria-hidden="true">
+            <span class="hub__pulse"></span>
+            <svg viewBox="0 0 32 32" focusable="false"><path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="6" r="2.3" fill="currentColor"/></svg>
+            <b>mogli</b>
+          </div>
+        </div>
+
+        <div class="hub__points">
+          <div class="hpoint" data-reveal><i class="bi bi-person-vcard" aria-hidden="true"></i><h3>One record per customer</h3><p>Enquiry, itinerary, bookings and payments stay together, so anyone on the team can pick up where another left off.</p></div>
+          <div class="hpoint" data-reveal><i class="bi bi-diagram-3" aria-hidden="true"></i><h3>One flow, start to finish</h3><p>An accepted quote becomes a booking, a booking creates tasks and payment reminders, with no re-typing.</p></div>
+          <div class="hpoint" data-reveal><i class="bi bi-graph-up-arrow" aria-hidden="true"></i><h3>One set of numbers</h3><p>Sales, collections and supplier dues come from the same data, so reports always agree.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SKY STAGES: pill tabs over a cloud photo, headline + CTA per stage, dark browser window below.
+         Window screenshots (assets/images/stages/*.webp) are real screenshots of the Mogli demo app.
+         ===================================================================== -->
+    <section class="sky" id="stages" aria-label="How Mogli works, from enquiry to payment">
+      <div class="sky__panel">
+        <div class="sky__bg" aria-hidden="true"></div>
+        <div class="sky__inner">
+
+          <div class="segmented" role="tablist" aria-label="Mogli workflow stages">
+            <span class="segmented__thumb" aria-hidden="true"></span>
+            <button class="seg is-active" type="button" role="tab" id="seg-capture" aria-controls="stagePanel" aria-selected="true" tabindex="0" data-stage="capture">Capture</button>
+            <button class="seg" type="button" role="tab" id="seg-plan" aria-controls="stagePanel" aria-selected="false" tabindex="-1" data-stage="plan">Plan</button>
+            <button class="seg" type="button" role="tab" id="seg-book" aria-controls="stagePanel" aria-selected="false" tabindex="-1" data-stage="book">Book</button>
+            <button class="seg" type="button" role="tab" id="seg-collect" aria-controls="stagePanel" aria-selected="false" tabindex="-1" data-stage="collect">Collect</button>
+          </div>
+
+          <div class="sky__copy" id="stagePanel" role="tabpanel" aria-labelledby="seg-capture">
+            <div class="sky__slide is-active" data-slide="capture">
+              <h2 class="sky__title">Never miss an enquiry</h2>
+              <p class="sky__desc">Capture leads from calls, WhatsApp, web forms and email. Each one gets a status, an owner and a follow-up reminder.</p>
+              <a class="btn btn-pill btn-pill--white" href="#demo">Explore Enquiries</a>
+            </div>
+            <div class="sky__slide" data-slide="plan" aria-hidden="true">
+              <h2 class="sky__title">Plan every trip, day by day</h2>
+              <p class="sky__desc">Build day-wise itineraries and reusable packages, price them in seconds and share a polished proposal.</p>
+              <a class="btn btn-pill btn-pill--white" href="#demo">Explore Itineraries</a>
+            </div>
+            <div class="sky__slide" data-slide="book" aria-hidden="true">
+              <h2 class="sky__title">Every booking, at a glance</h2>
+              <p class="sky__desc">Track hotels, flights and transfers for every trip, with confirmation status your whole team can see.</p>
+              <a class="btn btn-pill btn-pill--white" href="#demo">Explore Bookings</a>
+            </div>
+            <div class="sky__slide" data-slide="collect" aria-hidden="true">
+              <h2 class="sky__title">Know who has paid</h2>
+              <p class="sky__desc">Send payment links, record instalments and see who has paid, who is partial and what is still due.</p>
+              <a class="btn btn-pill btn-pill--white" href="#demo">Explore Payments</a>
+            </div>
+          </div>
+
+          <div class="skywin">
+            <div class="skywin__bar" aria-hidden="true">
+              <span class="skywin__dots"><i></i><i></i><i></i></span>
+              <span class="skywin__ctl"><i class="bi bi-layout-sidebar"></i><i class="bi bi-chevron-down"></i></span>
+              <span class="skywin__ctl"><i class="bi bi-chevron-left"></i><i class="bi bi-chevron-right"></i></span>
+              <span class="skywin__url"><i class="bi bi-lock-fill"></i>mogli.app<i class="bi bi-arrow-clockwise"></i></span>
+              <span class="skywin__ctl"><i class="bi bi-box-arrow-up"></i><i class="bi bi-plus-lg"></i><i class="bi bi-copy"></i></span>
+            </div>
+            <div class="skywin__screen">
+              <img class="sshot is-active" data-sshot="capture" src="assets/images/stages/capture.webp" alt="Mogli leads list with contact, trip details, source, team and stage" width="1896" height="864" loading="lazy" decoding="async">
+              <img class="sshot" data-sshot="plan" src="assets/images/stages/plan.webp" alt="Mogli booking page with day-wise hotel and transport components and their status" width="1896" height="864" loading="lazy" decoding="async">
+              <img class="sshot" data-sshot="book" src="assets/images/stages/book.webp" alt="Mogli bookings list with dates, value, reservation progress and status" width="1896" height="864" loading="lazy" decoding="async">
+              <img class="sshot" data-sshot="collect" src="assets/images/stages/collect.webp" alt="Mogli payment dashboard with money to collect from customers and pay to suppliers" width="1896" height="864" loading="lazy" decoding="async">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         OPS: horizontal expanding cards. On desktop they open one after another as you scroll (sticky runway,
+         no hijacking); click any card to open it. Previews (assets/images/ops/*.webp) are real screenshots of the Mogli demo app.
+         ===================================================================== -->
+    <section class="ops rail" id="ops" data-rail="5" aria-labelledby="ops-title">
+      <div class="rail__sticky">
+        <div class="ops__wrap">
+          <p class="ops__eyebrow" data-reveal>Software shaped around how travel teams work</p>
+          <h2 class="ops__title" id="ops-title" data-reveal>Mogli replaces spreadsheets and scattered chats with structured, streamlined operations</h2>
+          <div class="hcards" role="group" aria-label="Mogli features">
+            <article class="hcard is-open" data-ops="capture" style="--hue:0">
+              <button class="hcard__tab" type="button" id="hc-capture" aria-expanded="true" aria-controls="hcp-capture"><small>(01)</small><span>Enquiry Capture</span></button>
+              <div class="hcard__body" id="hcp-capture" role="region" aria-labelledby="hc-capture">
+                <div class="hcard__text">
+                  <p class="hcard__step">(01)</p>
+                  <h3>Enquiry Capture</h3>
+                  <p class="hcard__desc">Bring every enquiry from calls, WhatsApp, web forms and email into one inbox, each with an owner and a follow-up.</p>
+                  <ul class="hcard__list"><li><i class="bi bi-check-circle" aria-hidden="true"></i>One inbox for every source</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>An owner and status on each enquiry</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Follow-up reminders that do not slip</li></ul>
+                  <a class="hcard__link" href="#demo">See it in action <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="hcard__media"><img src="assets/images/ops/capture.webp" alt="Mogli email review screen turning an enquiry email into a lead" width="1210" height="864" loading="lazy" decoding="async"></div>
+              </div>
+            </article>
+            <article class="hcard" data-ops="itinerary" style="--hue:1">
+              <button class="hcard__tab" type="button" id="hc-itinerary" aria-expanded="false" aria-controls="hcp-itinerary"><small>(02)</small><span>Quick Itinerary Builder</span></button>
+              <div class="hcard__body" id="hcp-itinerary" role="region" aria-labelledby="hc-itinerary" aria-hidden="true">
+                <div class="hcard__text">
+                  <p class="hcard__step">(02)</p>
+                  <h3>Quick Itinerary Builder</h3>
+                  <p class="hcard__desc">Build day-wise plans from reusable packages, price them as you go and share a polished proposal in about a minute.</p>
+                  <ul class="hcard__list"><li><i class="bi bi-check-circle" aria-hidden="true"></i>Reusable packages and day plans</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Live pricing and margins</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Share a proposal in one click</li></ul>
+                  <a class="hcard__link" href="#demo">See it in action <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="hcard__media"><img src="assets/images/ops/itinerary.webp" alt="Mogli booking detail with day-wise hotel, transport and activity components" width="1210" height="864" loading="lazy" decoding="async"></div>
+              </div>
+            </article>
+            <article class="hcard" data-ops="calendar" style="--hue:2">
+              <button class="hcard__tab" type="button" id="hc-calendar" aria-expanded="false" aria-controls="hcp-calendar"><small>(03)</small><span>Tour Movement Calendar</span></button>
+              <div class="hcard__body" id="hcp-calendar" role="region" aria-labelledby="hc-calendar" aria-hidden="true">
+                <div class="hcard__text">
+                  <p class="hcard__step">(03)</p>
+                  <h3>Tour Movement Calendar</h3>
+                  <p class="hcard__desc">See every departure on one calendar, so operations always know who is travelling where and when.</p>
+                  <ul class="hcard__list"><li><i class="bi bi-check-circle" aria-hidden="true"></i>Every departure on one calendar</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Travellers, suppliers and tasks per trip</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Filter by destination or owner</li></ul>
+                  <a class="hcard__link" href="#demo">See it in action <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="hcard__media"><img src="assets/images/ops/calendar.webp" alt="Mogli movement chart showing trips day by day with hotel stays and transport" width="1210" height="864" loading="lazy" decoding="async"></div>
+              </div>
+            </article>
+            <article class="hcard" data-ops="payments" style="--hue:3">
+              <button class="hcard__tab" type="button" id="hc-payments" aria-expanded="false" aria-controls="hcp-payments"><small>(04)</small><span>Real-Time Payment Tracking</span></button>
+              <div class="hcard__body" id="hcp-payments" role="region" aria-labelledby="hc-payments" aria-hidden="true">
+                <div class="hcard__text">
+                  <p class="hcard__step">(04)</p>
+                  <h3>Real-Time Payment Tracking</h3>
+                  <p class="hcard__desc">Record instalments as they arrive and see at a glance who has paid, who is partial and who is overdue.</p>
+                  <ul class="hcard__list"><li><i class="bi bi-check-circle" aria-hidden="true"></i>Payment links and instalments</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Paid, partial and overdue at a glance</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Automatic reminders</li></ul>
+                  <a class="hcard__link" href="#demo">See it in action <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="hcard__media"><img src="assets/images/ops/payments.webp" alt="Mogli proforma invoices list with guest, booking, total and status" width="1210" height="864" loading="lazy" decoding="async"></div>
+              </div>
+            </article>
+            <article class="hcard" data-ops="reports" style="--hue:4">
+              <button class="hcard__tab" type="button" id="hc-reports" aria-expanded="false" aria-controls="hcp-reports"><small>(05)</small><span>Reports & Ledgers</span></button>
+              <div class="hcard__body" id="hcp-reports" role="region" aria-labelledby="hc-reports" aria-hidden="true">
+                <div class="hcard__text">
+                  <p class="hcard__step">(05)</p>
+                  <h3>Reports & Ledgers</h3>
+                  <p class="hcard__desc">Get real-time insight into sales, operations and profitability, with one-click report downloads.</p>
+                  <ul class="hcard__list"><li><i class="bi bi-check-circle" aria-hidden="true"></i>Sales, operations and profit reports</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>Customer and supplier ledgers</li><li><i class="bi bi-check-circle" aria-hidden="true"></i>One-click CSV export</li></ul>
+                  <a class="hcard__link" href="#demo">See it in action <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="hcard__media"><img src="assets/images/ops/reports.webp" alt="Mogli MIS dashboard with leads, conversions, booked value, profit and money to collect" width="1210" height="864" loading="lazy" decoding="async"></div>
+              </div>
+            </article>
+          </div>
+          <p class="rail__hint" aria-hidden="true"><i class="bi bi-mouse"></i> Scroll to explore</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TRUST: logo marquee, numbers and testimonials.
+         *** DEMO CONTENT *** The company names, logos (assets/images/logos/*.webp), numbers and quotes below are
+         invented placeholders so the layout can be judged. Replace them with real customers, real figures and
+         real, permissioned quotes before launch. Numbers animate from data-count (main.js, initTrust).
+         ===================================================================== -->
+    <section class="trust" id="trust" aria-labelledby="trust-title">
+      <div class="trust__wrap">
+        <div class="trust__head">
+          <p class="eyebrow-alt" data-reveal>Trusted by travel teams</p>
+          <h2 id="trust-title">Teams that sell journeys, not spreadsheets</h2>
+        </div>
+
+        <!-- Logo marquee: the second list is an aria-hidden copy so the loop is seamless -->
+        <div class="marquee" data-marquee>
+          <div class="marquee__track">
+          <ul class="marquee__set" aria-label="Travel companies using Mogli (demo logos)">
+            <li><img src="assets/images/logos/wanderline.webp" alt="Wanderline" width="536" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/skyroute.webp" alt="Skyroute" width="638" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/nomad.webp" alt="Nomad &amp; Co." width="642" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/palm.webp" alt="Palm Escapes" width="637" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/trailhead.webp" alt="Trailhead" width="617" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/bluecompass.webp" alt="Bluecompass" width="648" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/oasis.webp" alt="Oasis Journeys" width="664" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/kestrel.webp" alt="Kestrel" width="472" height="132" loading="lazy" decoding="async"></li>
+          </ul>
+          <ul class="marquee__set" aria-hidden="true">
+            <li><img src="assets/images/logos/wanderline.webp" alt="" width="536" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/skyroute.webp" alt="" width="638" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/nomad.webp" alt="" width="642" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/palm.webp" alt="" width="637" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/trailhead.webp" alt="" width="617" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/bluecompass.webp" alt="" width="648" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/oasis.webp" alt="" width="664" height="132" loading="lazy" decoding="async"></li>
+            <li><img src="assets/images/logos/kestrel.webp" alt="" width="472" height="132" loading="lazy" decoding="async"></li>
+          </ul>
+          </div>
+        </div>
+
+        <ul class="stats">
+          <li class="stat"><strong class="stat__n"><span data-count="12400" data-suffix="+">12,400+</span></strong><span class="stat__l">Trips planned every month</span></li>
+          <li class="stat"><strong class="stat__n"><span data-count="38" data-suffix="%">38%</span></strong><span class="stat__l">Faster quote turnaround</span></li>
+          <li class="stat"><strong class="stat__n"><span data-count="150" data-suffix="+">150+</span></strong><span class="stat__l">Agencies and operators on board</span></li>
+          <li class="stat"><strong class="stat__n"><span data-count="4.8" data-decimals="1" data-suffix="/5">4.8/5</span></strong><span class="stat__l">Average rating from teams</span></li>
+        </ul>
+
+        <div class="quotes">
+          <figure class="quote quote--lilac">
+            <blockquote><p>“Our enquiries used to live in five different chats. Now every lead has an owner, a status and a next step, and nothing slips.”</p></blockquote>
+            <figcaption><span class="quote__av" aria-hidden="true">AM</span><span><strong>Aarav Mehta</strong><small>Founder, Wanderline Holidays</small></span></figcaption>
+          </figure>
+          <figure class="quote quote--sky">
+            <blockquote><p>“Building a day-wise itinerary and sending a clean proposal takes minutes, and the booking details follow without re-typing.”</p></blockquote>
+            <figcaption><span class="quote__av" aria-hidden="true">SM</span><span><strong>Sofia Marin</strong><small>Operations Lead, Skyroute Journeys</small></span></figcaption>
+          </figure>
+          <figure class="quote quote--mint">
+            <blockquote><p>“I can finally see who has paid, who is partial and what is due this week, without asking anyone for a spreadsheet.”</p></blockquote>
+            <figcaption><span class="quote__av" aria-hidden="true">DO</span><span><strong>Daniel Okafor</strong><small>Sales Manager, Trailhead Expeditions</small></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ORBIT: centre logo with two rings of travel photos that revolve behind it (GSAP, see initOrbit in main.js).
+         Replace assets/images/orbit/orbit-01..12.webp with real photos (any size; each slot crops to its own ratio).
+         ===================================================================== -->
+    <section class="orbit" id="orbit" aria-labelledby="orbit-title">
+      <div class="orbit__stage">
+
+        <!-- Outer ring: smaller, slower, turns the other way, sits behind the main ring -->
+        <div class="orbit__ring orbit__ring--b" data-ring="b" data-dir="-1" data-loop="110" data-phase="0.45" aria-hidden="true">
+          <div class="orbit__item" style="--k:0.95;--ar:3/2"><img src="assets/images/orbit/orbit-03.webp" alt="" width="960" height="640" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:0.8;--ar:1/1"><img src="assets/images/orbit/orbit-04.webp" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:0.75;--ar:1/1"><img src="assets/images/orbit/orbit-08.webp" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:0.9;--ar:4/3"><img src="assets/images/orbit/orbit-09.webp" alt="" width="960" height="720" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:0.8;--ar:1/1"><img src="assets/images/orbit/orbit-12.webp" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+        </div>
+
+        <!-- Main ring -->
+        <div class="orbit__ring orbit__ring--a" data-ring="a" data-dir="1" data-loop="80" data-phase="0" aria-hidden="true">
+          <div class="orbit__item" style="--k:1.5;--ar:4/3"><img src="assets/images/orbit/orbit-01.webp" alt="" width="960" height="720" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:1.0;--ar:3/4"><img src="assets/images/orbit/orbit-02.webp" alt="" width="720" height="960" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:1.2;--ar:4/3"><img src="assets/images/orbit/orbit-05.webp" alt="" width="960" height="720" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:1.05;--ar:3/4"><img src="assets/images/orbit/orbit-06.webp" alt="" width="720" height="960" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:1.35;--ar:3/2"><img src="assets/images/orbit/orbit-07.webp" alt="" width="960" height="640" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:1.1;--ar:3/4"><img src="assets/images/orbit/orbit-10.webp" alt="" width="720" height="960" loading="lazy" decoding="async"></div>
+          <div class="orbit__item" style="--k:1.25;--ar:3/2"><img src="assets/images/orbit/orbit-11.webp" alt="" width="960" height="640" loading="lazy" decoding="async"></div>
+        </div>
+
+        <div class="orbit__halo" aria-hidden="true"></div>
+
+        <div class="orbit__logo">
+          <svg class="orbit__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="6" r="2.3" fill="currentColor"/>
+          </svg>
+          <h2 class="orbit__word" id="orbit-title">mogli<span class="visually-hidden"> brings every journey together</span></h2>
+          <p class="orbit__tag">One platform for every journey.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         NEXT SECTION: BENEFITS
+         ===================================================================== -->
+    <section class="benefits" id="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="benefits__intro">
+          <p class="eyebrow-alt">Built for travel businesses</p>
+          <h2 id="benefits-title">Everything Your Travel Business Needs. <span>Nothing You Don’t.</span></h2>
+          <p class="benefits__lead">One calm workspace for the whole journey, from the first message a customer sends to the final payment that lands.</p>
+        </div>
+
+        <div class="row g-4 benefits__grid">
+          <div class="col-12 col-md-6 col-lg-3">
+            <article class="benefit-card">
+              <span class="benefit-card__icon"><i class="bi bi-inbox" aria-hidden="true"></i></span>
+              <span class="benefit-card__no">01</span>
+              <h3>Enquiries</h3>
+              <p>Capture every lead from calls, WhatsApp, web forms and email in one inbox, each with a status, an owner and a follow-up reminder.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <article class="benefit-card">
+              <span class="benefit-card__icon"><i class="bi bi-map" aria-hidden="true"></i></span>
+              <span class="benefit-card__no">02</span>
+              <h3>Itineraries</h3>
+              <p>Build day-wise itineraries and reusable packages, price them in seconds and share a polished proposal your customers can approve.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <article class="benefit-card">
+              <span class="benefit-card__icon"><i class="bi bi-calendar-check" aria-hidden="true"></i></span>
+              <span class="benefit-card__no">03</span>
+              <h3>Bookings</h3>
+              <p>Track hotels, flights and transfers for every trip, with confirmation status your whole team can see at a glance.</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <article class="benefit-card">
+              <span class="benefit-card__icon"><i class="bi bi-wallet2" aria-hidden="true"></i></span>
+              <span class="benefit-card__no">04</span>
+              <h3>Payments</h3>
+              <p>Send payment links, record instalments and see who has paid, who is partial and what is still due, without a spreadsheet.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- FAQ. *** DEMO CONTENT *** Replace the questions and answers with your real ones. -->
+        <div class="faq" id="faq">
+          <div class="faq__head">
+            <p class="eyebrow-alt">Questions, answered</p>
+            <h2 id="faq-title">Frequently asked questions</h2>
+          </div>
+          <ul class="faq__list">
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><span>Who is Mogli built for?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div><p>Mogli is made for travel agencies, tour operators and the sales and operations teams inside them: anyone who turns customer enquiries into itineraries, bookings and payments.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span>Can we bring in our existing customers and enquiries?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Yes. You can import customer lists and open enquiries from a spreadsheet, so your team starts with its real data on day one instead of a blank workspace.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span>How do payments and instalments work?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Every booking carries its own payment schedule. Record instalments, send payment links and see who has paid, who is partial and what is still due, all in one view.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span>Can different team members see different things?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>Yes. Give sales, operations and accounts the access they need, so each person sees their own work first and the rest of the trip when they need it.</p></div></div>
+            </li>
+            <li class="faq__item">
+              <h3><button class="faq__q" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span>How long does it take to get started?</span><i class="bi bi-plus-lg" aria-hidden="true"></i></button></h3>
+              <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div><p>Most teams are working in Mogli within days. Book a demo and we will set up a sample workspace with your own itineraries so you can see it before you commit.</p></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ===== BLOG SECTION (paste where you want it) ===== -->
+        <section class="blog" id="blog" aria-labelledby="blog-title">
+          <header class="blog__head">
+            <h2 id="blog-title">Secrets of a Modern Travel Business, Revealed</h2>
+          </header>
+
+          <div class="blog__grid">
+            <!-- Left: three list posts -->
+            <div class="blog__list">
+              <article class="bpost bpost--row">
+                <a class="bpost__media" href="#" data-placeholder-link tabindex="-1" aria-hidden="true">
+                  <img src="assets/images/blog/webinar.webp" width="612" height="390" loading="lazy" alt="">
+                  <time class="bdate" datetime="2026-11-07"><b>7</b><span>Nov</span></time>
+                </a>
+                <div class="bpost__body">
+                  <span class="btag">Ideas</span>
+                  <h3><a href="#" data-placeholder-link>How to Quote a Trip in Under a Minute</a></h3>
+                </div>
+              </article>
+
+              <article class="bpost bpost--row">
+                <a class="bpost__media" href="#" data-placeholder-link tabindex="-1" aria-hidden="true">
+                  <img src="assets/images/blog/guide.webp" width="612" height="390" loading="lazy" alt="">
+                  <time class="bdate" datetime="2026-11-07"><b>7</b><span>Nov</span></time>
+                </a>
+                <div class="bpost__body">
+                  <span class="btag">Ideas</span>
+                  <h3><a href="#" data-placeholder-link>Your Ultimate Guide to Running a DMC Without Excel</a></h3>
+                </div>
+              </article>
+
+              <article class="bpost bpost--row">
+                <a class="bpost__media" href="#" data-placeholder-link tabindex="-1" aria-hidden="true">
+                  <img src="assets/images/blog/podcast.webp" width="612" height="390" loading="lazy" alt="">
+                  <time class="bdate" datetime="2026-11-07"><b>7</b><span>Nov</span></time>
+                </a>
+                <div class="bpost__body">
+                  <span class="btag">Ideas</span>
+                  <h3><a href="#" data-placeholder-link>Supplier Contracts That Never Expire Unnoticed</a></h3>
+                </div>
+              </article>
+            </div>
+
+            <!-- Right: featured post -->
+            <article class="bpost bpost--feature">
+              <a class="bpost__media" href="#" data-placeholder-link tabindex="-1" aria-hidden="true">
+                <img src="assets/images/blog/featured.webp" width="1200" height="693" loading="lazy" alt="">
+                <time class="bdate" datetime="2026-11-13"><b>13</b><span>Nov</span></time>
+              </a>
+              <div class="bpost__body">
+                <span class="btag">Smart</span>
+                <h3><a href="#" data-placeholder-link>Why Modern Travel Agencies Are Moving to One Connected Platform</a></h3>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Target for every "Book a Demo" / "Get Started" button.
+             Replace the href below with your real booking or sign-up page. -->
+        <div class="cta-band" id="demo">
+          <div class="cta-band__text">
+            <h3>See Mogli with your own itineraries</h3>
+            <p>Book a short walkthrough and we will set up a sample workspace for your agency.</p>
+          </div>
+          <a class="btn btn-pill btn-pill--white" href="contact.html?topic=demo"><i class="bi bi-calendar-check" aria-hidden="true"></i> Book a Demo</a>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand brand--dark" href="index.html" aria-label="Mogli home"><svg class="brand__mark" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false"><path d="M4 25 L11 10 L16 19 L21 10 L28 25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="6" r="2.3" fill="currentColor"/></svg><span class="brand__word">mogli</span></a>
+          <p class="site-footer__tag">Travel management software for agencies, tour operators and DMCs.</p>
+        </div>
+        <nav aria-label="Features" class="site-footer__features"><h3>Features</h3><ul><li><a href="features/auto-lead-capture/">Auto Lead Capture</a></li><li><a href="features/auto-lead-distribution/">Auto Lead Distribution</a></li><li><a href="features/follow-ups-and-reminders/">Advanced Follow-ups &amp; Reminders</a></li><li><a href="features/real-time-reports/">Real-Time Reports</a></li><li><a href="features/smart-itinerary-builder/">Smart Itinerary Builder</a></li><li><a href="features/pricing-and-markup/">Pricing &amp; Mark-up</a></li><li><a href="features/smart-tour-calendar/">Smart Tour Calendar</a></li><li><a href="features/check-in-check-out-reports/">Check-in / Check-out Reports</a></li><li><a href="features/shared-departures/">Shared Departures</a></li><li><a href="features/real-time-payment-tracking/">Real-Time Payment Tracking</a></li><li><a href="features/proforma-invoice/">Proforma Invoice</a></li><li><a href="features/suppliers-ledger/">Suppliers Ledger</a></li><li><a href="features/bulk-rate-import/">Bulk Rate Import</a></li><li><a href="features/smart-price-handling/">Smart Price Handling</a></li><li><a href="features/channel-management/">Channel Management</a></li><li><a href="features/user-management-and-roles/">User Management &amp; Roles</a></li></ul></nav>
+        <nav aria-label="Solutions"><h3>Solutions</h3><ul><li><a href="solutions-for/dmcs/">DMCs</a></li><li><a href="solutions-for/international-inbound-tour-operators/">International Inbound Tour Operators</a></li><li><a href="solutions-for/outbound-tour-operators/">Outbound Tour Operators</a></li><li><a href="solutions-for/b2b-hotel-consolidators/">B2B Hotel Consolidators</a></li><li><a href="solutions-for/global-travel-agents/">Global Travel Agents</a></li><li><a href="solutions-for/hospitality-industry/">Hospitality Industry</a></li></ul></nav>
+        <nav aria-label="Company"><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of service</a></li></ul></nav>
+      </div>
+      <p class="site-footer__copy"><span>&copy; 2026 Mogli. All rights reserved.</span><span class="site-footer__safe">safe travels &#10038;</span><a href="privacy-policy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+    </section>
+  </main>
+
+  <!-- Scripts: Bootstrap (dropdown + collapse), GSAP core, ScrollTrigger, then our code -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
